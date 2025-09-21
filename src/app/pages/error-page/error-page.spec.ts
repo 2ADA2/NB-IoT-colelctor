@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutMain } from './layout-main';
+import { ErrorPage } from './error-page';
 
-describe('LayoutMain', () => {
-  let component: LayoutMain;
-  let fixture: ComponentFixture<LayoutMain>;
+describe('ErrorPage', () => {
+  let component: ErrorPage;
+  let fixture: ComponentFixture<ErrorPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LayoutMain],
+      imports: [ErrorPage]
     })
-      .compileComponents();
+    .compileComponents();
 
-    fixture = TestBed.createComponent(LayoutMain);
+    fixture = TestBed.createComponent(ErrorPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
