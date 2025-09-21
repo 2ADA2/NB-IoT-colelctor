@@ -1,0 +1,11 @@
+.main-window {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: calc(100vh - 80px);
+}
+@media (max-width: 1600px) {
+  .main-window {
+    grid-template-rows: calc(100vh - 60px);
+  }
+}
