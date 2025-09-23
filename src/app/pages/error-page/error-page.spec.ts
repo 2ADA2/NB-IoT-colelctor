@@ -8,9 +8,9 @@ describe('ErrorPage', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ErrorPage]
+      imports: [ErrorPage],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ErrorPage);
     component = fixture.componentInstance;

@@ -10,30 +10,30 @@ import { AdvancedSettings } from './pages/advanced-settings/advanced-settings';
 import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
-    {
-        path: "", children: [
-            {
-                path: AUTH_ROUTE,
-                component: LayoutLite,
-                children: [
-                    { path: "", component: Auth },
-                ],
-            },
-            {
-                path:"",
-                component: LayoutMain,
-                children:[
-                    { path:HOME_ROUTE, component: Home },
-                    { path:SETTINGS_ROUTE, component: Settings },
-                    { path:ADVANCED_ROUTE, component: AdvancedSettings },
-                    {
-                        path:SOURCES_ROUTE,
-                        component: Sources,
-                        children:[],
-                    },
-                ],
-                canActivate: [authGuard],
-            },
+  {
+    path: "", children: [
+      {
+        path: AUTH_ROUTE,
+        component: LayoutLite,
+        children: [
+          { path: "", component: Auth },
         ],
-    },
+      },
+      {
+        path:"",
+        component: LayoutMain,
+        children:[
+          { path:HOME_ROUTE, component: Home },
+          { path:SETTINGS_ROUTE, component: Settings },
+          { path:ADVANCED_ROUTE, component: AdvancedSettings },
+          {
+            path:SOURCES_ROUTE,
+            component: Sources,
+            children:[],
+          },
+        ],
+        canActivate: [authGuard],
+      },
+    ],
+  },
 ];

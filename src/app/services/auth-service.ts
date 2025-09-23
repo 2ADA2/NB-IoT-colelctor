@@ -5,27 +5,27 @@ import { AUTH } from '../core/consts/requests';
 import { Core } from "./core";
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class AuthService {
-    private cookieService: CookieService = inject(CookieService);
-    private http: HttpClient = inject(HttpClient);
-    private core = inject(Core);
+  private cookieService: CookieService = inject(CookieService);
+  private http: HttpClient = inject(HttpClient);
+  private core = inject(Core);
 
-    isAuthenticated() {
+  isAuthenticated() {
 
-    }
+  }
 
-    login(payload: { username: string, password: string }) {
-        return this.http.post(AUTH, {
-            "AuthData": {
-                "Login": payload.username,
-                "Password": payload.password,
-            },
-        });
-    }
+  login(payload: { username: string, password: string }) {
+    return this.http.post(AUTH, {
+      "AuthData": {
+        "Login": payload.username,
+        "Password": payload.password,
+      },
+    });
+  }
 
-    getToken(): string {
-        return this.cookieService.get("token");
-    }
+  getToken(): string {
+    return this.cookieService.get("token");
+  }
 }

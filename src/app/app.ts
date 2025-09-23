@@ -4,13 +4,13 @@ import { CookieService } from 'ngx-cookie-service';
 import { Core } from './services/core';
 
 @Component({
-    selector: 'app-root',
-    imports: [
-        RouterOutlet,
-    ],
-    templateUrl: './app.html',
-    styleUrl: './app.scss',
+  selector: 'app-root',
+  imports: [
+    RouterOutlet,
+  ],
+  templateUrl: './app.html',
+  styleUrl: './app.scss',
 })
 export class App {
-    // core = inject(Core);
+  // core = inject(Core);
 }

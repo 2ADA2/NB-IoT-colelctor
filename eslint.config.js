@@ -25,7 +25,7 @@ export default tseslint.config(
       ],
       "comma-dangle": ["error", "always-multiline"],
       "semi": ["error", "always"], // точки с запятой
-      "indent": ["error", 4], // отступ = 2 пробела
+      "indent": ["error", 2], // отступ = 2 пробела
       "no-trailing-spaces": "error", // без лишних пробелов
       "eol-last": ["error", "always"], // пустая строка в конце файла
       "space-before-blocks": "error", // пробел перед {
