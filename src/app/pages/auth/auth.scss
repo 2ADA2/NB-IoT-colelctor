@@ -1,0 +1,15 @@
+.auth-block{
+  width: 400px;
+  margin: 20px auto;
+  font-size: 16px;
+
+  & form{
+    padding: 20px;
+    background: white;
+    & input{
+      margin-bottom: 10px;
+    }
+
+
+  }
+}

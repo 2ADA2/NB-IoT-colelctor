@@ -1,0 +1,18 @@
+<div class="auth-block flex flex-col gap-1">
+  <app-block-head>Авторизация</app-block-head>
+  <form
+    class="auth-form flex flex-col justify-center gap-2"
+    [formGroup]="form"
+    (ngSubmit)="login()"
+  >
+
+    <label for="username" class="form-label">Имя пользователя</label>
+    <input id="username" type="text" class="standard-input" formControlName="username">
+
+    <label for="password" class="form-label">Пароль</label>
+    <input id="password" type="password" class="standard-input" formControlName="password">
+
+    <button class="standard-button m-auto">Войти</button>
+  </form>
+</div>
+
