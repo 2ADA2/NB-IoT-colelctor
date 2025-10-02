@@ -6,6 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { TokenInterface } from '../../core/interfaces/auth';
 import { Router } from '@angular/router';
 import { HOME_ROUTE } from '../../core/consts/routes';
+import { MessageService } from '../../services/message-service';
 
 @Component({
   selector: 'app-auth',
@@ -18,10 +19,9 @@ import { HOME_ROUTE } from '../../core/consts/routes';
 })
 export class Auth {
   private authService:AuthService = inject(AuthService);
+  private messageService:MessageService = inject(MessageService);
   private cookieService = inject(CookieService);
   private routerService = inject(Router);
-
-  public err = "";
 
   form: FormGroup = new FormGroup({
     username: new FormControl(""),
@@ -30,9 +30,9 @@ export class Auth {
 
   login() {
     if (this.form.value.username.length < 3) {
-      this.err = "Неверное имя пользователя";
+      this.messageService.createError("Ошибка входа", "Слишком короткое имя пользователя");
     } else if (this.form.value.password.length < 3) {
-      this.err = "Неверный пароль";
+      this.messageService.createError("Ошибка входа", "Слишком короткий пароль");
     } else {
       this.authService.login(this.form.value).subscribe({
         next: (res:TokenInterface) => {
@@ -40,7 +40,7 @@ export class Auth {
           this.routerService.navigateByUrl(HOME_ROUTE);
         },
         error: err => {
-          this.err = err;
+          this.messageService.createError("Ошибка входа", "Неверное имя пользователя или пароль");
         },
       });
     }
