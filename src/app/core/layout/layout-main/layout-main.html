@@ -1,7 +1,15 @@
 <app-header></app-header>
 <main class="main-window">
-  <app-navigation></app-navigation>
-  <section class="window">
-    <router-outlet></router-outlet>
-  </section>
+  @if (isLoading){
+    <app-loading></app-loading>
+  } @else{
+    <app-navigation></app-navigation>
+    <section class="window">
+      <router-outlet></router-outlet>
+    </section>
+  }
+
+
 </main>
+
+
