@@ -7,18 +7,22 @@ header {
   padding: 0 40px;
   font-size: 32px;
 
-  & sup{
+  & sup {
     font-size: 16px;
     margin-left: 4px;
+  }
+
+  & .version {
+    font-size: 12px;
   }
 }
 
 @media (max-width: 1600px) {
-  header{
-    height:60px;
-    font-size: 24px;
+  header {
+    height: 60px;
+    font-size: 28px;
 
-    & sup{
+    & sup {
       font-size: 12px;
     }
   }

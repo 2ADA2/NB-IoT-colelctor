@@ -7,6 +7,8 @@ import { Sources } from './pages/sources/sources';
 import { Home } from './pages/home/home';
 import { Settings } from './pages/settings/settings';
 import { AdvancedSettings } from './pages/advanced-settings/advanced-settings';
+import { authGuard } from './core/guards/auth-guard';
+import { authRouteGuard } from './core/guards/auth-route-guard';
 
 export const routes: Routes = [
   {
@@ -17,6 +19,7 @@ export const routes: Routes = [
         children: [
           { path: "", component: Auth },
         ],
+        canActivate:[authRouteGuard],
       },
       {
         path:"",
@@ -30,7 +33,9 @@ export const routes: Routes = [
             component: Sources,
             children:[],
           },
+          { path:"**", redirectTo:AUTH_ROUTE },
         ],
+        canActivate: [authGuard],
       },
     ],
   },

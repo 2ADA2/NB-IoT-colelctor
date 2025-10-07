@@ -1,16 +1,19 @@
-export const SH = "/sh219%20info";
-export const MQTT = "/mqtt";
-export const SUB = "/sub";
-
-export const TYPE = SH+"/protocol%20type";
-export const OS = SH+"/operating%20system";
+import { environment } from '../../../environments/environment';
 
 
-export const AUTH = MQTT + "/Authorization";
+export const SH: string = environment.API_URL + "/sh219%20info";
+export const MQTT: string = environment.API_URL + "/mqtt";
+export const SUB: string = environment.API_URL + "/sub";
+
+export const TYPE: string = SH + "/protocol%20type";
+export const OS: string = SH + "/operating%20system";
+
+
+export const AUTH: string = MQTT + "/Authorization";
 
 // mqtt
-export const MQTT_SETTINGS = MQTT + "/settings";
+export const MQTT_SETTINGS: string = MQTT + "/settings";
 
 
 // sub
-export const SUB_SETTINGS = SUB + "/settings";
+export const SUB_SETTINGS: string = SUB + "/settings";
