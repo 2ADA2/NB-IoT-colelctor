@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { AUTH } from '../core/consts/requests';
-import { Core } from "./core";
 import { TokenInterface } from '../core/interfaces/auth';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -16,11 +15,11 @@ export class AuthService {
   private routerService = inject(Router);
   private http: HttpClient = inject(HttpClient);
 
-  isAuthenticated() {
+  public isAuthenticated() {
     return !!this.cookieService.get("token");
   }
 
-  login(payload: { username: string, password: string }):Observable<TokenInterface> {
+  public login(payload: { username: string, password: string }):Observable<TokenInterface> {
     return this.http.post<TokenInterface>(AUTH, {
       "AuthData": {
         "Login": payload.username,
@@ -29,12 +28,12 @@ export class AuthService {
     });
   }
 
-  logout() {
+  public logout() {
     this.cookieService.delete("token");
     this.routerService.navigateByUrl(AUTH_ROUTE);
   }
 
-  getToken(): string {
+  public getToken(): string {
     return this.cookieService.get("token");
   }
 }

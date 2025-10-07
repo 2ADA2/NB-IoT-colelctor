@@ -1,5 +1,5 @@
-<aside class="message-container flex flex-col gap-2">
-  @for (message of messages; track message.id) {
+<aside class="message-container flex flex-col-reverse gap-2">
+  @for (message of messages(); track message.id) {
     <div class="message {{message.type}} flex flex-col">
       <button (click)="deleteMessage(message.id)">x</button>
       <h5>{{message.header}}</h5>

@@ -6,6 +6,7 @@ import { environment } from '../../../../../environments/environment';
   imports: [],
   templateUrl: './header.html',
   styleUrl: './header.scss',
+  standalone: true,
 })
 export class Header {
   ver: string = environment.VERSION;

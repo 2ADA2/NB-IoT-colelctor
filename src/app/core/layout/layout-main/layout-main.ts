@@ -1,8 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { Header } from '../components/header/header';
 import { Navigation } from '../components/navigation/navigation';
 import { RouterOutlet } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
 import { Core } from '../../../services/core';
 import { Loading } from '../../../pages/loading/loading';
 import { MessageContainer } from '../components/message-container/message-container';
@@ -18,14 +17,9 @@ import { MessageContainer } from '../components/message-container/message-contai
   ],
   templateUrl: './layout-main.html',
   styleUrl: './layout-main.scss',
+  standalone: true,
 })
 export class LayoutMain {
   private core: Core = inject(Core);
-  public isLoading = true;
-
-  constructor() {
-    this.core.coreLoading.subscribe(loading => {
-      this.isLoading = loading;
-    });
-  }
+  public isLoading = computed(() => this.core.coreLoading());
 }

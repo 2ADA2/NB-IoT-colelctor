@@ -9,6 +9,7 @@ import { ADVANCED_ROUTE, HOME_ROUTE, SETTINGS_ROUTE, SOURCES_ROUTE } from '../..
   ],
   templateUrl: './navigation.html',
   styleUrl: './navigation.scss',
+  standalone: true,
 })
 export class Navigation {
   protected readonly ADVANCED = ADVANCED_ROUTE;
