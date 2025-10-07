@@ -5,6 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { Core } from '../../../services/core';
 import { Loading } from '../../../pages/loading/loading';
+import { MessageContainer } from '../components/message-container/message-container';
 
 @Component({
   selector: 'app-layout-main',
@@ -13,6 +14,7 @@ import { Loading } from '../../../pages/loading/loading';
     Navigation,
     RouterOutlet,
     Loading,
+    MessageContainer,
   ],
   templateUrl: './layout-main.html',
   styleUrl: './layout-main.scss',

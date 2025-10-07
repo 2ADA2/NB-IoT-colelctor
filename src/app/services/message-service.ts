@@ -5,23 +5,38 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+
 export class MessageService {
-  private messages = new Map<string, MessageInterface>();
+  private messages:Map<string, MessageInterface> = new Map<string, MessageInterface>();
   public messagesCount = new Subject<number>();
 
-  getMessages() {
-    return this.messages;
+  getMessages():MessageInterface[] {
+    const formatted_messages:MessageInterface[] = [];
+    this.messages.forEach((message:MessageInterface) => {
+      return formatted_messages.push(message);
+    });
+    return formatted_messages.reverse();
   }
 
-  newMessage(message: string, header:string, type:MessageTypeInterface): void {
-    this.messages.set(new Date().toISOString()+"ID", { type, message, header });
+  newMessage(header:string, message: string, type:MessageTypeInterface): void {
+    const id = new Date().toISOString()+"ID";
+    this.messages.set(id, { id, type, message, header });
+    this.update();
+  }
+
+  createError(header:string, message:string):void {
+    const type = "danger";
+    const id = new Date().toISOString()+"ID";
+    this.messages.set(id, { id, type, message, header });
+    this.update();
   }
 
   deleteMessage(id: string) {
     this.messages.delete(id);
+    this.update();
   }
 
-  deleteMessages(id: string) {
+  deleteMessages() {
     this.messages = new Map<string, MessageInterface>();
   }
 

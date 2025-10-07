@@ -1,0 +1,48 @@
+.message-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 400px;
+  height: 200px;
+  padding: 10px;
+  overflow-y: auto;
+  transition-duration: 100ms;
+
+  & .message {
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    background: var(--text-light-color);
+    transition-duration: 100ms;
+    animation: show-message 0.3s;
+
+    & button {
+      position: absolute;
+      right: 10px;
+      top: 4px;
+      cursor: pointer;
+    }
+
+    & h5 {
+      font-size: 18px;
+      color: black;
+    }
+  }
+
+  & .danger {
+    background: #ffb9d8;
+
+  }
+}
+
+
+@keyframes show-message {
+  0% {
+    opacity: 0;
+    bottom: 20px;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
