@@ -1,0 +1,11 @@
+.standard-input{
+  height: 40px;
+  background: white;
+  border: 2px solid var(--text-light-color);
+  padding: 0 4px;
+  border-radius: 2px;
+
+  &:focus{
+    outline: none;
+  }
+}

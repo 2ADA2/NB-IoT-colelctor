@@ -22,6 +22,13 @@ export class Core {
     this.updateProtocol();
   }
 
+  public getInfo():{os:string, protocol:string} {
+    return {
+      os: this.os||"",
+      protocol: this.protocol||"",
+    };
+  }
+
   private updateOs() {
     this.http.get<OSInterface>(OS).pipe(
       tap((next: OSInterface) => {

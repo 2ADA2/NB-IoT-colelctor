@@ -3,6 +3,10 @@
   display: grid;
   grid-template-columns: 240px 1fr;
   grid-template-rows: calc(100vh - 80px);
+
+  & .window{
+    padding: 24px;
+  }
 }
 @media (max-width: 1600px) {
   .main-window {

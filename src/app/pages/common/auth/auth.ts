@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { AuthService } from '../../services/auth-service';
+import { AuthService } from '../../../services/auth-service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BlockHead } from '../components/block-head/block-head';
+import { BlockHead } from '../../components/block-head/block-head';
 import { CookieService } from 'ngx-cookie-service';
-import { TokenInterface } from '../../core/interfaces/auth';
+import { TokenInterface } from '../../../core/interfaces/auth';
 import { Router } from '@angular/router';
-import { HOME_ROUTE } from '../../core/consts/routes';
-import { MessageService } from '../../services/message-service';
-import { AUTH_RU } from '../../core/localization/ru/auth-ru';
+import { HOME_ROUTE } from '../../../core/consts/routes';
+import { MessageService } from '../../../services/message-service';
+import { AUTH_RU } from '../../../core/localization/ru/auth-ru';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 

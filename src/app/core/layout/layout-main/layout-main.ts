@@ -3,7 +3,7 @@ import { Header } from '../components/header/header';
 import { Navigation } from '../components/navigation/navigation';
 import { RouterOutlet } from '@angular/router';
 import { Core } from '../../../services/core';
-import { Loading } from '../../../pages/loading/loading';
+import { Loading } from '../../../pages/common/loading/loading';
 import { MessageContainer } from '../components/message-container/message-container';
 
 @Component({

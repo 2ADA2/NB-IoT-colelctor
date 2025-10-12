@@ -1,0 +1,34 @@
+.standard-button{
+  height: 40px;
+  width: 120px;
+  background: var(--main-light-color);
+  border-radius: 2px;
+  color:white;
+  cursor: pointer;
+
+  &:hover{
+    background: var(--main-light-hover-color);
+  }
+  &:focus{
+    background: var(--main-light-hover-color);
+  }
+}
+
+.nav-btn{
+  width:100%;
+  height:55px;
+  background-color:var(--main-light-color);
+  color:white;
+
+  &:hover{
+    background-color:var(--main-light-hover-color);
+  }
+}
+
+.btn-link{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
