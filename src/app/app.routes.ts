@@ -19,21 +19,22 @@ export const routes: Routes = [
         children: [
           { path: "", component: Auth },
         ],
-        canActivate:[authRouteGuard],
+        canActivate: [authRouteGuard],
       },
       {
-        path:"",
+        path: "",
         component: LayoutMain,
-        children:[
-          { path:HOME_ROUTE, component: Home },
-          { path:SETTINGS_ROUTE, component: Settings },
-          { path:ADVANCED_ROUTE, component: AdvancedSettings },
+        children: [
+          { path: "", redirectTo:HOME_ROUTE, pathMatch:"full" },
+          { path: HOME_ROUTE, component: Home },
+          { path: SETTINGS_ROUTE, component: Settings },
+          { path: ADVANCED_ROUTE, component: AdvancedSettings },
           {
-            path:SOURCES_ROUTE,
+            path: SOURCES_ROUTE,
             component: Sources,
-            children:[],
+            children: [],
           },
-          { path:"**", redirectTo:AUTH_ROUTE },
+          { path: "**", redirectTo: AUTH_ROUTE },
         ],
         canActivate: [authGuard],
       },

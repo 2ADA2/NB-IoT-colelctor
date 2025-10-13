@@ -17,3 +17,9 @@
     justify-content: flex-end;
   }
 }
+
+@media (max-width: 1000px) {
+  .standard-container{
+    grid-template-columns: 300px 1fr;
+  }
+}

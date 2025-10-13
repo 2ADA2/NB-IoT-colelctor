@@ -1,0 +1,30 @@
+.console-area{
+  width: 100%;
+  height: 300px;
+  resize: none;
+  border: 2px solid var(--text-light-color);
+}
+
+.standard-input {
+  height: 40px;
+  border: 2px solid var(--text-light-color);
+}
+
+.console-input-container{
+  position: relative;
+
+  & button{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    right: -10px;
+    background: var(--back-white-color);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}

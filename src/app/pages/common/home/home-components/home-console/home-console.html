@@ -1,1 +1,16 @@
-<p>home-console works!</p>
+<h3>{{ HOME_RU.CONSOLE }}</h3>
+<textarea
+  name="console-text"
+  class="console-area"
+  [formControl]="consoleText"
+></textarea>
+<div class="console-input-container">
+  <input
+    name="console-input"
+    class="standard-input w-full"
+    type = "text"
+    [formControl]="consoleControl"
+    (keydown.enter)="sendCommand()"
+  >
+  <button class="send-cmd-button" (click)="sendCommand()">></button>
+</div>

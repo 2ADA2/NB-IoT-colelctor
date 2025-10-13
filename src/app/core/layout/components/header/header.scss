@@ -15,6 +15,11 @@ header {
   & .version {
     font-size: 12px;
   }
+
+  & .program-header img{
+    height: 40px;
+    margin-right:16px;
+  }
 }
 
 @media (max-width: 1600px) {
