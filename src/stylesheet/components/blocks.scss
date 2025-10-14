@@ -1,0 +1,25 @@
+.standard-block{
+  display: flex;
+  flex-direction: column;
+  gap:4px;
+}
+
+.standard-container{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap:8px;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+
+  & :first-child {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 1000px) {
+  .standard-container{
+    grid-template-columns: 300px 1fr;
+  }
+}

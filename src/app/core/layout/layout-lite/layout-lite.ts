@@ -12,7 +12,7 @@ import { MessageContainer } from '../components/message-container/message-contai
   ],
   templateUrl: './layout-lite.html',
   styleUrl: './layout-lite.scss',
+  standalone: true,
 })
 export class LayoutLite {
-
 }

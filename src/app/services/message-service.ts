@@ -1,46 +1,53 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { MessageInterface, MessageTypeInterface } from '../core/interfaces/messages';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class MessageService {
-  private messages:Map<string, MessageInterface> = new Map<string, MessageInterface>();
-  public messagesCount = new Subject<number>();
+  public messages: WritableSignal<Map<string, MessageInterface>> = signal(new Map());
 
-  getMessages():MessageInterface[] {
+
+  public getMessages():MessageInterface[] {
     const formatted_messages:MessageInterface[] = [];
-    this.messages.forEach((message:MessageInterface) => {
+    this.messages().forEach((message:MessageInterface) => {
       return formatted_messages.push(message);
     });
     return formatted_messages.reverse();
   }
 
-  newMessage(header:string, message: string, type:MessageTypeInterface): void {
-    const id = new Date().toISOString()+"ID";
-    this.messages.set(id, { id, type, message, header });
-    this.update();
+  public newMessage(header:string, message: string, type:MessageTypeInterface): void {
+    this.messages.update((prev) => {
+      const id = new Date().toISOString()+"ID";
+      const copy = new Map(prev);
+      copy.set(id, { id, type, message, header });
+      return copy;
+    });
   }
 
-  createError(header:string, message:string):void {
+  public createError(header:string, message:string):void {
     const type = "danger";
-    const id = new Date().toISOString()+"ID";
-    this.messages.set(id, { id, type, message, header });
-    this.update();
+    this.messages.update((prev) => {
+      const id = new Date().toISOString()+"ID";
+      const copy = new Map(prev);
+      copy.set(id, { id, type, message, header });
+      setTimeout(() => {
+        this.deleteMessage(id);
+      },2000);
+      return copy;
+    });
   }
 
-  deleteMessage(id: string) {
-    this.messages.delete(id);
-    this.update();
+  public deleteMessage(id: string) {
+    this.messages.update((prev) => {
+      const copy = new Map(prev);
+      copy.delete(id);
+      return copy;
+    });
   }
 
-  deleteMessages() {
-    this.messages = new Map<string, MessageInterface>();
-  }
-
-  update() {
-    this.messagesCount.next(this.messages.size);
+  public deleteMessages() {
+    this.messages.update(() => new Map());
   }
 }

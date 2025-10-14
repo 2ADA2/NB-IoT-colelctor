@@ -5,7 +5,5 @@ export interface MessageInterface {
   header: string;
 }
 
-
-
 export type MessageTypeInterface = "standard" | "success" | "warning" | "danger";
 

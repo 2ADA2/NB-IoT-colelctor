@@ -1,14 +1,45 @@
 <nav class="layout-nav flex-col flex gap-1">
-  <button class="nav-btn">
-    <a class="btn-link" routerLink="{{HOME}}">Главная</a>
+  <button class="nav-btn {{checkActivated(HOME)}}">
+    <a
+      class="btn-link"
+      routerLink="{{HOME}}"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Home icon"
+        fontIcon="home"
+      ></mat-icon>
+      {{ NAV_RU.MAIN }}
+    </a>
   </button>
-  <button class="nav-btn">
-    <a class="btn-link" routerLink="{{SOURCES}}">Устройства</a>
+  <button class="nav-btn {{checkActivated(SOURCES)}}">
+    <a class="btn-link" routerLink="{{SOURCES}}">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Devices icon"
+        fontIcon="devices"
+      ></mat-icon>
+      {{ NAV_RU.SOURCES }}
+    </a>
   </button>
-  <button class="nav-btn">
-    <a class="btn-link" routerLink="{{SETTINGS}}">Настройки</a>
+  <button class="nav-btn {{checkActivated(SETTINGS)}}">
+    <a class="btn-link" routerLink="{{SETTINGS}}">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Settings icon"
+        fontIcon="settings"
+      ></mat-icon>
+      {{ NAV_RU.SETTINGS }}
+    </a>
   </button>
-  <button class="nav-btn">
-    <a class="btn-link" routerLink="{{ADVANCED}}">Расширенные</a>
+  <button class="nav-btn {{checkActivated(ADVANCED)}}">
+    <a class="btn-link" routerLink="{{ADVANCED}}">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Manufacturing icon"
+        fontIcon="terminal"
+      ></mat-icon>
+      {{ NAV_RU.ADV_SETTINGS }}
+    </a>
   </button>
 </nav>
