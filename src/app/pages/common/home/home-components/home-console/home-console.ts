@@ -3,11 +3,13 @@ import { HOME_RU } from "../../../../../core/localization/ru/home-ru";
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HomeService } from '../../../../../services/home-service';
 import { tap } from 'rxjs/operators';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-home-console',
   imports: [
     ReactiveFormsModule,
+    MatIcon,
   ],
   templateUrl: './home-console.html',
   styleUrl: './home-console.scss',
@@ -32,11 +34,12 @@ export class HomeConsole {
       setTimeout(() => {
         this.addConsoleText("pong");
       },100);
+      this.consoleControl.reset();
       return;
     }
 
     this.homeService.cmdGet(val).pipe(tap((res:string) => {
-      console.log(res);
+      this.addConsoleText(res);
     })).subscribe();
     this.consoleControl.reset();
   }

@@ -16,9 +16,12 @@ header {
     font-size: 12px;
   }
 
-  & .program-header img{
-    height: 40px;
-    margin-right:16px;
+  & .program-header {
+    align-items: center;
+    & img {
+      height: 30px;
+      margin-right: 16px;
+    }
   }
 }
 

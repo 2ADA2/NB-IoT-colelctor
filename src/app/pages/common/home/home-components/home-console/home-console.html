@@ -12,5 +12,12 @@
     [formControl]="consoleControl"
     (keydown.enter)="sendCommand()"
   >
-  <button class="send-cmd-button" (click)="sendCommand()">></button>
+  <button class="send-cmd-button" (click)="sendCommand()">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="arrow right"
+      fontIcon="arrow_right"
+      style="color: var(--text-color)"
+    ></mat-icon>
+  </button>
 </div>
