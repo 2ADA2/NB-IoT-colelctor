@@ -1,6 +1,5 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
 import { CMD } from '../core/consts/requests';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -12,11 +11,7 @@ export class HomeService {
 
   public procInfo :WritableSignal<string> = signal("");
 
-  public updateProcInfo() {
-    this.http.get("").pipe(tap((res) => {
-      console.log(res);
-    })).subscribe();
-  }
+  // proc-info-fn
 
   public cmd = "";
   private cookieService = inject(CookieService);
