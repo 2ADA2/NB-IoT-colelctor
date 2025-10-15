@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 import { ADVANCED_ROUTE, AUTH_ROUTE, HOME_ROUTE, SETTINGS_ROUTE, SOURCES_ROUTE } from './core/consts/routes';
 import { LayoutLite } from './core/layout/layout-lite/layout-lite';
-import { Auth } from './pages/auth/auth';
+import { Auth } from './pages/common/auth/auth';
 import { LayoutMain } from './core/layout/layout-main/layout-main';
-import { Sources } from './pages/sources/sources';
-import { Home } from './pages/home/home';
-import { Settings } from './pages/settings/settings';
-import { AdvancedSettings } from './pages/advanced-settings/advanced-settings';
+import { Sources } from './pages/common/sources/sources';
+import { Home } from './pages/common/home/home';
+import { Settings } from './pages/common/settings/settings';
+import { AdvancedSettings } from './pages/common/advanced-settings/advanced-settings';
 import { authGuard } from './core/guards/auth-guard';
 import { authRouteGuard } from './core/guards/auth-route-guard';
 
@@ -19,21 +19,22 @@ export const routes: Routes = [
         children: [
           { path: "", component: Auth },
         ],
-        canActivate:[authRouteGuard],
+        canActivate: [authRouteGuard],
       },
       {
-        path:"",
+        path: "",
         component: LayoutMain,
-        children:[
-          { path:HOME_ROUTE, component: Home },
-          { path:SETTINGS_ROUTE, component: Settings },
-          { path:ADVANCED_ROUTE, component: AdvancedSettings },
+        children: [
+          { path: "", redirectTo:HOME_ROUTE, pathMatch:"full" },
+          { path: HOME_ROUTE, component: Home },
+          { path: SETTINGS_ROUTE, component: Settings },
+          { path: ADVANCED_ROUTE, component: AdvancedSettings },
           {
-            path:SOURCES_ROUTE,
+            path: SOURCES_ROUTE,
             component: Sources,
-            children:[],
+            children: [],
           },
-          { path:"**", redirectTo:AUTH_ROUTE },
+          { path: "**", redirectTo: AUTH_ROUTE },
         ],
         canActivate: [authGuard],
       },

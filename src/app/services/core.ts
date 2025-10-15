@@ -1,8 +1,10 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OS, TYPE } from '../core/consts/requests';
 import { OSInterface, ProtocolInterface } from '../core/interfaces/core';
-import { Subject } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
@@ -13,48 +15,57 @@ export class Core {
   private os: "win" | "linux" | null = null;
   private protocol: "mqtt" | "sub" | null = null;
 
-  public coreLoading = new Subject<boolean>();
+  public coreLoading: WritableSignal<boolean> = signal(true);
 
   constructor() {
     this.updateOs();
     this.updateProtocol();
   }
 
-  updateOs() {
-    this.http.get<OSInterface>(OS).subscribe({
-      next: (next: OSInterface) => {
+  public getInfo():{os:string, protocol:string} {
+    return {
+      os: this.os||"",
+      protocol: this.protocol||"",
+    };
+  }
+
+  private updateOs() {
+    this.http.get<OSInterface>(OS).pipe(
+      tap((next: OSInterface) => {
         this.os = next["Operating system"];
         this.checkLoading();
-      },
-      error: (err: Error) => {
-        this.err = err;
-      },
-    });
+      }),
+      catchError(() => {
+        this.err = new Error("Auth error");
+        return of(null);
+      }),
+    ).subscribe();
   }
 
-  updateProtocol() {
-    return this.http.get<ProtocolInterface>(TYPE).subscribe({
-      next: (next: ProtocolInterface) => {
+  private updateProtocol() {
+    return this.http.get<ProtocolInterface>(TYPE).pipe(
+      tap((next: ProtocolInterface) => {
         this.protocol = next["Protocol type"];
         this.checkLoading();
-      },
-      error: (err: Error) => {
-        this.err = err;
-      },
-    });
+      }),
+      catchError(() => {
+        this.err = new Error("Protocol invalid");
+        return of(null);
+      }),
+    ).subscribe();
   }
 
-  checkLoading() {
+  private checkLoading() {
     if (this.os && this.protocol && !this.err) {
-      this.coreLoading.next(false);
+      this.coreLoading.set(false);
     }
   }
 
-  checkError() {
+  private checkError() {
     return !!this.err;
   }
 
-  updateCore() {
+  public updateCore() {
     this.os = null;
     this.protocol = null;
     this.err = null;

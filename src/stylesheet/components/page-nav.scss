@@ -1,0 +1,28 @@
+.page-nav{
+  border-bottom: 2px solid var(--text-light-color);
+  position: relative;
+  margin-bottom: 16px;
+
+  & button{
+    width: 120px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-bottom: 2px solid var(--text-light-color);
+    background: white;
+    position: relative;
+    top:2px;
+    color: var(--text-blue-color);
+  }
+
+  & .active{
+    padding: 8px 15px 10px 15px;
+    border:2px solid var(--text-light-color);
+    border-bottom: 2px solid white;
+    border-radius: 5px 5px 0 0;
+    color: var(--main-color);
+  }
+}
