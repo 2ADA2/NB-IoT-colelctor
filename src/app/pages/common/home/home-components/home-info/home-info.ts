@@ -1,5 +1,4 @@
 import { Component, effect, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Core } from '../../../../../services/core';
 import { HOME_RU } from '../../../../../core/localization/ru/home-ru';
 
@@ -10,12 +9,11 @@ import { HOME_RU } from '../../../../../core/localization/ru/home-ru';
   styleUrl: './home-info.scss',
 })
 export class HomeInfo {
-  private http: HttpClient = inject(HttpClient);
   private core = inject(Core);
 
-  os = "";
-  protocol = "";
-  procInfo="";
+  public os = "";
+  public protocol = "";
+  public procInfo="";
 
   constructor() {
     effect(() => {
