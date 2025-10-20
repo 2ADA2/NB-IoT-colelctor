@@ -1,9 +1,10 @@
 .light-window{
-  height: calc(100vh - 100px);
+  min-height: 100vh;
+  padding-top: 80px;
 }
 
 @media (max-width: 1600px) {
   .light-window{
-    height: calc(100vh - 80px);
+    padding-top: 60px;
   }
 }

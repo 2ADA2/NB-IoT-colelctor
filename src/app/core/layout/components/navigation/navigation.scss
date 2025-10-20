@@ -1,6 +1,8 @@
 .layout-nav{
   background: var(--main-color);
   height: 100%;
+  position: fixed;
+  width: 240px;
 
   & button a{
     display: flex;
@@ -14,6 +16,15 @@
     border-left: 8px solid var(--flash-color);
     & a{
       padding-left: 16px;
+    }
+  }
+}
+
+@media(max-width: 850px) {
+  .layout-nav {
+    width: 72px;
+    & button span{
+      display: none;
     }
   }
 }

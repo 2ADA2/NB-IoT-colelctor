@@ -16,6 +16,7 @@ import { tap } from 'rxjs/operators';
   styleUrl: './navigation.scss',
   standalone: true,
 })
+
 export class Navigation {
   protected readonly ADVANCED = ADVANCED_ROUTE;
   protected readonly HOME = HOME_ROUTE;
@@ -34,6 +35,6 @@ export class Navigation {
   }
 
   public checkActivated(route:string) {
-    return this.currentUrl.includes("/"+route) ? "activated" : "";
+    return this.currentUrl.includes("/"+route);
   }
 }
