@@ -19,9 +19,6 @@ export class HomeService {
 
   public cmdGet(command:string) {
     return this.http.post(CMD, { CMD:command }, {
-      headers:{
-        "Authorization": this.cookieService.get("token"),
-      },
       responseType: "text" as const,
     }).pipe(tap((res:string) => {
       this.saveCmdText(res);

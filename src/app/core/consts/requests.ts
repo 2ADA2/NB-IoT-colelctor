@@ -17,6 +17,7 @@ export const AUTH: string = MQTT + "/Authorization";
 export const MQTT_SETTINGS: string = MQTT + "/settings";
 export const MQTT_SET_SETTINGS: string = MQTT + "/set settings";
 
+export const ADVANCED: string = MQTT + "/Advanced%20settings";
 
 // sub
 export const SUB_SETTINGS: string = SUB + "/settings";

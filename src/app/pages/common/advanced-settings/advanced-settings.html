@@ -1,1 +1,42 @@
-<p>advanced-settings works!</p>
+<div class="flex flex-col gap-1 h-full">
+  <h1>Расширенные настройки</h1>
+
+  <app-block-head>
+    Настройки
+  </app-block-head>
+  <app-body>
+    <textarea
+      name="console-text"
+      class="console-area"
+      [formControl]="consoleText"
+    ></textarea>
+    <button class="standard-button m-auto mt-2">сохранить</button>
+  </app-body>
+
+  <app-block-head>
+    Обновление ПО
+  </app-block-head>
+  <app-body>
+    <div>
+      <h3>Frontend</h3>
+      <div class="file-input-wrapper">
+        <label class="file-label">
+          Выберите файл
+          <input type="file" (change)="onFileSelected($event)">
+        </label>
+        <div class="file-name" *ngIf="fileName">{{ fileName }}</div>
+      </div>
+    </div>
+    <div>
+      <h3>Backend</h3>
+      <div class="file-input-wrapper">
+        <label class="file-label">
+          Выберите файл
+          <input type="file" (change)="onFileSelected($event)">
+        </label>
+        <div class="file-name" *ngIf="fileName">{{ fileName }}</div>
+      </div>
+    </div>
+
+  </app-body>
+</div>
