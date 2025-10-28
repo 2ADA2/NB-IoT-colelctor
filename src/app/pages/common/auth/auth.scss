@@ -1,12 +1,13 @@
-.auth-block{
+.auth-block {
   width: 400px;
   margin: 20px auto;
   font-size: 16px;
 
-  & form{
+  & form {
     padding: 20px;
     background: white;
-    & input{
+
+    & input {
       margin-bottom: 10px;
       max-width: none;
     }

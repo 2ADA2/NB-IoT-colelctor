@@ -1,11 +1,12 @@
-.standard-input{
+.standard-input {
   height: 32px;
   background: white;
   border: 2px solid var(--text-light-color);
   padding: 0 4px;
   border-radius: 2px;
   max-width: 300px;
-  &:focus{
+
+  &:focus {
     outline: none;
   }
 }

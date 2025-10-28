@@ -19,7 +19,7 @@ export class AuthService {
     return !!this.cookieService.get("token");
   }
 
-  public login(payload: { username: string, password: string }):Observable<TokenInterface> {
+  public login(payload: { username: string, password: string }): Observable<TokenInterface> {
     return this.http.post<TokenInterface>(AUTH, {
       "AuthData": {
         "Login": payload.username,

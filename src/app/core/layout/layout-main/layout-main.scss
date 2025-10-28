@@ -5,10 +5,11 @@
   grid-template-rows: 100%;
   padding-top: 80px;
 
-  & .window{
+  & .window {
     padding: 24px;
   }
 }
+
 @media (max-width: 1600px) {
   .main-window {
     grid-template-rows: 100%;

@@ -12,7 +12,7 @@ import { MessageInterface } from '../../../interfaces/messages';
 export class MessageContainer {
   private messageService: MessageService = inject(MessageService);
   public messages = computed(() => {
-    const arr:MessageInterface[] = [];
+    const arr: MessageInterface[] = [];
     const map = this.messageService.messages();
     map.forEach((e) => {
       arr.push(e);

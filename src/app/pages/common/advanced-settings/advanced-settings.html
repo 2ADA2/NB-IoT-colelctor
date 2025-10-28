@@ -1,8 +1,8 @@
 <div class="flex flex-col gap-1 h-full">
-  <h1>Расширенные настройки</h1>
+  <h1>{{ ADV_SETTINGS_RU.ADV_SETTINGS }}</h1>
 
   <app-block-head>
-    Настройки
+    {{ ADV_SETTINGS_RU.SETTINGS }}
   </app-block-head>
   <app-body>
     <textarea
@@ -10,33 +10,35 @@
       class="console-area"
       [formControl]="consoleText"
     ></textarea>
-    <button class="standard-button m-auto mt-2">сохранить</button>
+    <button class="standard-button m-auto mt-2">
+      {{ ADV_SETTINGS_RU.SAVE }}
+    </button>
   </app-body>
 
   <app-block-head>
-    Обновление ПО
+    {{ ADV_SETTINGS_RU.UPDATE }}
   </app-block-head>
   <app-body>
-    <div>
+    <div class="flex flex-col items-center justify-center m-auto">
       <h3>Frontend</h3>
       <div class="file-input-wrapper">
         <label class="file-label">
-          Выберите файл
-          <input type="file" (change)="onFileSelected($event)">
+          {{ frontFileName || ADV_SETTINGS_RU.CHOOSE_FILE }}
+          <input type="file" (change)="frontFileSelect($event)">
         </label>
-        <div class="file-name" *ngIf="fileName">{{ fileName }}</div>
       </div>
     </div>
-    <div>
+    <div class="flex flex-col items-center justify-center m-auto">
       <h3>Backend</h3>
       <div class="file-input-wrapper">
         <label class="file-label">
-          Выберите файл
-          <input type="file" (change)="onFileSelected($event)">
+          {{ backFileName || ADV_SETTINGS_RU.CHOOSE_FILE }}
+          <input type="file" (change)="backFileSelect($event)">
         </label>
-        <div class="file-name" *ngIf="fileName">{{ fileName }}</div>
       </div>
     </div>
-
+    <button class="standard-button m-auto mt-2" (click)="sendFiles()">
+      {{ ADV_SETTINGS_RU.SAVE }}
+    </button>
   </app-body>
 </div>

@@ -1,20 +1,21 @@
-.layout-nav{
+.layout-nav {
   background: var(--main-color);
   height: 100%;
   position: fixed;
   width: 240px;
 
-  & button a{
+  & button a {
     display: flex;
     width: 100%;
-    gap:16px;
+    gap: 16px;
     justify-content: flex-start;
     padding: 0 24px;
   }
 
-  & .activated{
+  & .activated {
     border-left: 8px solid var(--flash-color);
-    & a{
+
+    & a {
       padding-left: 16px;
     }
   }
@@ -23,7 +24,8 @@
 @media(max-width: 850px) {
   .layout-nav {
     width: 72px;
-    & button span{
+
+    & button span {
       display: none;
     }
   }

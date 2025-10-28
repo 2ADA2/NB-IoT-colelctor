@@ -21,7 +21,7 @@ export class Home {
 
   public pageNum = 1;
 
-  public setNum(num:number) {
+  public setNum(num: number) {
     this.pageNum = num;
   }
 }

@@ -34,7 +34,7 @@ export class Navigation {
       .subscribe();
   }
 
-  public checkActivated(route:string) {
-    return this.currentUrl.includes("/"+route);
+  public checkActivated(route: string) {
+    return this.currentUrl.includes("/" + route);
   }
 }

@@ -1,8 +1,8 @@
 <app-header></app-header>
 <main class="main-window">
-  @if (isLoading()){
+  @if (isLoading()) {
     <app-loading></app-loading>
-  } @else{
+  } @else {
     <app-navigation></app-navigation>
     <section class="window">
       <router-outlet></router-outlet>

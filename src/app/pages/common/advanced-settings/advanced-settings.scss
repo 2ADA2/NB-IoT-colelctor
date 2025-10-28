@@ -17,7 +17,7 @@ input[type="file"] {
 .file-label {
   display: block;
   padding: 10px 15px;
-  background-color: var(--main-color);
+  background: var(--main-light-color);
   color: #fff;
   text-align: center;
   border-radius: 4px;
@@ -28,17 +28,10 @@ input[type="file"] {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--main-light-color);
+    background-color: var(--main-light-hover-color);
   }
 
   & input {
     display: none;
   }
-}
-
-.file-name {
-  margin-top: 8px;
-  font-size: 0.9rem;
-  color: #333;
-  word-break: break-word;
 }

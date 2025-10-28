@@ -8,7 +8,7 @@ export const SUB: string = environment.API_URL + "/sub";
 // sh
 export const TYPE: string = SH + "/protocol%20type";
 export const OS: string = SH + "/operating%20system";
-export const CMD:string = SH + "/cmd_get";
+export const CMD: string = SH + "/cmd_get";
 
 
 export const AUTH: string = MQTT + "/Authorization";
@@ -18,6 +18,8 @@ export const MQTT_SETTINGS: string = MQTT + "/settings";
 export const MQTT_SET_SETTINGS: string = MQTT + "/set settings";
 
 export const ADVANCED: string = MQTT + "/Advanced%20settings";
+export const BACKEND_UPDATE: string = MQTT + "/backend%20update";
+export const FRONTEND_UPDATE: string = MQTT + "/frontend%update";
 
 // sub
 export const SUB_SETTINGS: string = SUB + "/settings";

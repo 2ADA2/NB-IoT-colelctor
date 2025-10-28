@@ -1,11 +1,12 @@
-export interface OSInterface{
+export interface OSInterface {
   "Operating system": "win" | "linux"
 }
-export interface ProtocolInterface{
+
+export interface ProtocolInterface {
   "Protocol type": "mqtt" | "sub"
 }
 
-export interface GetInfoInterface{
-  os:string,
-  protocol:string,
+export interface GetInfoInterface {
+  os: string,
+  protocol: string,
 }

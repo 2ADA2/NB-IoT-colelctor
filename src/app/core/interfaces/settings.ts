@@ -1,9 +1,9 @@
 interface ConnectionDetails {
-    "CleanSession": boolean
-    "ClientID": string
-    "HostName": string
-    "KeepAlive": number
-    "Port": number
+  "CleanSession": boolean
+  "ClientID": string
+  "HostName": string
+  "KeepAlive": number
+  "Port": number
 }
 
 interface Credentials {
@@ -23,6 +23,7 @@ export interface SettingsData {
   Credentials: Credentials;
   LastWill: LastWill;
 }
+
 export interface SettingsFormData {
   "CleanSession": boolean
   "ClientID": string

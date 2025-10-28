@@ -38,18 +38,18 @@ export class HomeConsole {
     if (val === "ping") {
       setTimeout(() => {
         this.addConsoleText("pong");
-      },100);
+      }, 100);
       this.consoleControl.reset();
       return;
     }
 
-    this.homeService.cmdGet(val).pipe(tap((res:string) => {
+    this.homeService.cmdGet(val).pipe(tap((res: string) => {
       this.addConsoleText(res);
     })).subscribe();
     this.consoleControl.reset();
   }
 
-  private addConsoleText(val:string) {
+  private addConsoleText(val: string) {
     const history = this.consoleText.value || '';
     this.consoleText.setValue(history ? `${history}\n> ${val}` : `> ${val}`);
     this.homeService.saveCmdText(this.consoleText.value || "");
