@@ -1,1 +1,75 @@
-<p>settings works!</p>
+<div class="flex flex-col gap-1">
+  <h1>Настройки</h1>
+  <form class="flex flex-col gap-1" [formGroup]="formGroup">
+    <app-block-head>
+      Connection Details
+    </app-block-head>
+    <app-body>
+      <div class="standard-container">
+        <span>Host Name</span>
+        <input type="text" class="standard-input" formControlName="HostName">
+      </div>
+      <div class="standard-container">
+        <span>Port</span>
+        <input type="number" [min]="1000" [max]="10000" class="standard-input" formControlName="Port">
+      </div>
+      <div class="standard-container">
+        <span>Client ID</span>
+        <input type="string" class="standard-input" formControlName="ClientID">
+      </div>
+      <div class="standard-container">
+        <span>Clean Session</span>
+        <mat-slide-toggle formControlName="CleanSession"></mat-slide-toggle>
+      </div>
+      <div class="standard-container">
+        <span>Keep Alive</span>
+        <input type="number" [min]="0" class="standard-input" formControlName="KeepAlive">
+      </div>
+    </app-body>
+
+    <app-block-head>
+      Credentials
+    </app-block-head>
+    <app-body class="">
+      <div class="standard-container">
+        <span>Name</span>
+        <input type="text" class="standard-input" formControlName="Name">
+      </div>
+      <div class="standard-container">
+        <span>Password</span>
+        <input type="text" class="standard-input" formControlName="Password">
+      </div>
+    </app-body>
+
+    <app-block-head>
+      Last-Will
+    </app-block-head>
+    <app-body class="">
+      <div class="standard-container">
+        <span>Last-Will Topic</span>
+        <input type="text" class="standard-input" formControlName="LWTopic">
+      </div>
+      <div class="standard-container">
+        <span>Last-Will Message</span>
+        <input type="text" class="standard-input" formControlName="LWTopic">
+      </div>
+      <div class="standard-container">
+        <span>Last-Will Retain</span>
+        <mat-slide-toggle formControlName="LWRetain"></mat-slide-toggle>
+      </div>
+      <div class="standard-container">
+        <span>Last-Will Qos</span>
+        <mat-form-field class="my-select" style="max-width: 300px;">
+          <mat-select formControlName="LWQos">
+            @for(lw of LWData; track lw) {
+              <mat-option [value]="lw.val">{{lw.viewValue}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button class="standard-button m-auto" (click) = "saveSettings()">Сохранить</button>
+    </app-body>
+
+  </form>
+
+</div>

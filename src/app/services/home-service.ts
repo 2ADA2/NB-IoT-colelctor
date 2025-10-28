@@ -2,6 +2,7 @@ import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CMD } from '../core/consts/requests';
 import { CookieService } from 'ngx-cookie-service';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class HomeService {
 
   // proc-info-fn
 
-  public cmd = "";
+  public cmd :WritableSignal<string> = signal("");
   private cookieService = inject(CookieService);
 
   public cmdGet(command:string) {
@@ -22,11 +23,13 @@ export class HomeService {
         "Authorization": this.cookieService.get("token"),
       },
       responseType: "text" as const,
-    });
+    }).pipe(tap((res:string) => {
+      this.saveCmdText(res);
+    }));
   }
 
   public saveCmdText(val:string) {
-    this.cmd = val;
+    this.cmd.set(val);
   }
 
 }

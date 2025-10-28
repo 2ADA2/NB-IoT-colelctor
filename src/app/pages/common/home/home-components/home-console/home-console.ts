@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { HOME_RU } from "../../../../../core/localization/ru/home-ru";
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HomeService } from '../../../../../services/home-service';
@@ -15,13 +15,18 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './home-console.scss',
 })
 export class HomeConsole {
-  protected readonly HOME_RU = HOME_RU;
   private homeService: HomeService = inject(HomeService);
 
-  consoleControl = new FormControl("");
-  consoleText = new FormControl(this.homeService.cmd);
+  public consoleControl = new FormControl("");
+  public consoleText = new FormControl(this.homeService.cmd());
 
-  sendCommand() {
+  constructor() {
+    effect(() => {
+      this.consoleText.setValue(this.homeService.cmd());
+    });
+  }
+
+  public sendCommand() {
     const val: string | null = this.consoleControl.value;
 
     if (!val || !val.trim()) {
@@ -44,9 +49,11 @@ export class HomeConsole {
     this.consoleControl.reset();
   }
 
-  addConsoleText(val:string) {
+  private addConsoleText(val:string) {
     const history = this.consoleText.value || '';
     this.consoleText.setValue(history ? `${history}\n> ${val}` : `> ${val}`);
     this.homeService.saveCmdText(this.consoleText.value || "");
   }
+
+  protected readonly HOME_RU = HOME_RU;
 }

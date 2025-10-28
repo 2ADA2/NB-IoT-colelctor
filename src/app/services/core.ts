@@ -1,7 +1,7 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OS, TYPE } from '../core/consts/requests';
-import { OSInterface, ProtocolInterface } from '../core/interfaces/core';
+import { GetInfoInterface, OSInterface, ProtocolInterface } from '../core/interfaces/core';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -22,7 +22,7 @@ export class Core {
     this.updateProtocol();
   }
 
-  public getInfo():{os:string, protocol:string} {
+  public getInfo():GetInfoInterface {
     return {
       os: this.os||"",
       protocol: this.protocol||"",

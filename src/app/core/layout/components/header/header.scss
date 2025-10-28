@@ -1,4 +1,6 @@
 header {
+  position: fixed;
+  width: 100%;
   background: var(--main-color);
   color: white;
   height: 80px;
@@ -33,5 +35,11 @@ header {
     & sup {
       font-size: 12px;
     }
+  }
+}
+@media (max-width: 500px) {
+  header{
+    padding: 0 20px;
+    font-size: 20px;
   }
 }

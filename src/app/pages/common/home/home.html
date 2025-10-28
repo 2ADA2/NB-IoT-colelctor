@@ -7,8 +7,8 @@
 
   <app-body class="h-full">
     <div class="page-nav flex gap-2">
-      <button (click)="setNum(1)" class="{{pageNum === 1 ? 'active' : ''}}">{{HOME_RU.INFO}}</button>
-      <button (click)="setNum(2)" class="{{pageNum === 2 ? 'active' : ''}}">{{HOME_RU.CONSOLE}}</button>
+      <button (click)="setNum(1)" [class.active]="pageNum===1">{{HOME_RU.INFO}}</button>
+      <button (click)="setNum(2)" [class.active]="pageNum===2">{{HOME_RU.CONSOLE}}</button>
     </div>
 
     @if(pageNum === 1){

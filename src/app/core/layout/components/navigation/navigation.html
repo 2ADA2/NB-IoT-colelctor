@@ -1,5 +1,5 @@
 <nav class="layout-nav flex-col flex gap-1">
-  <button class="nav-btn {{checkActivated(HOME)}}">
+  <button class="nav-btn" [class.activated]="checkActivated(HOME)">
     <a
       class="btn-link"
       routerLink="{{HOME}}"
@@ -9,37 +9,37 @@
         aria-label="Home icon"
         fontIcon="home"
       ></mat-icon>
-      {{ NAV_RU.MAIN }}
+      <span>{{ NAV_RU.MAIN }}</span>
     </a>
   </button>
-  <button class="nav-btn {{checkActivated(SOURCES)}}">
+  <button class="nav-btn" [class.activated]="checkActivated(SOURCES)">
     <a class="btn-link" routerLink="{{SOURCES}}">
       <mat-icon
         aria-hidden="false"
         aria-label="Devices icon"
         fontIcon="devices"
       ></mat-icon>
-      {{ NAV_RU.SOURCES }}
+      <span>{{ NAV_RU.SOURCES }}</span>
     </a>
   </button>
-  <button class="nav-btn {{checkActivated(SETTINGS)}}">
+  <button class="nav-btn" [class.activated]="checkActivated(SETTINGS)">
     <a class="btn-link" routerLink="{{SETTINGS}}">
       <mat-icon
         aria-hidden="false"
         aria-label="Settings icon"
         fontIcon="settings"
       ></mat-icon>
-      {{ NAV_RU.SETTINGS }}
+      <span>{{ NAV_RU.SETTINGS }}</span>
     </a>
   </button>
-  <button class="nav-btn {{checkActivated(ADVANCED)}}">
+  <button class="nav-btn" [class.activated]="checkActivated(ADVANCED)">
     <a class="btn-link" routerLink="{{ADVANCED}}">
       <mat-icon
         aria-hidden="false"
         aria-label="Manufacturing icon"
         fontIcon="terminal"
       ></mat-icon>
-      {{ NAV_RU.ADV_SETTINGS }}
+      <span>{{ NAV_RU.ADV_SETTINGS }}</span>
     </a>
   </button>
 </nav>
