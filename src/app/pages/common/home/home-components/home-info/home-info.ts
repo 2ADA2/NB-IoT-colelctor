@@ -1,5 +1,5 @@
-import { Component, effect, inject } from '@angular/core';
-import { Core } from '../../../../../services/core';
+import { Component, effect, inject, Injector, runInInjectionContext, OnInit } from '@angular/core';
+import { Core } from '../../../../../services/common/core';
 import { HOME_RU } from '../../../../../core/localization/ru/home-ru';
 
 @Component({
@@ -7,19 +7,23 @@ import { HOME_RU } from '../../../../../core/localization/ru/home-ru';
   imports: [],
   templateUrl: './home-info.html',
   styleUrl: './home-info.scss',
+  standalone: true,
 })
-export class HomeInfo {
+export class HomeInfo implements OnInit {
   private core = inject(Core);
+  private injector = inject(Injector);
 
   public os = "";
   public protocol = "";
   public procInfo = "";
 
-  constructor() {
-    effect(() => {
-      const info = this.core.getInfo();
-      this.os = info.os;
-      this.protocol = info.protocol;
+  ngOnInit() {
+    runInInjectionContext(this.injector, () => {
+      effect(() => {
+        const info = this.core.getInfo();
+        this.os = info.os;
+        this.protocol = info.protocol;
+      });
     });
   }
 

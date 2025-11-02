@@ -1,6 +1,6 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CMD } from '../core/consts/requests';
+import { CMD } from '../../core/requests/common';
 import { CookieService } from 'ngx-cookie-service';
 import { tap } from 'rxjs/operators';
 

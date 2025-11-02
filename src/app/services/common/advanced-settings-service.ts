@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ADVANCED, BACKEND_UPDATE, FRONTEND_UPDATE } from '../core/consts/requests';
+import { ADVANCED, BACKEND_UPDATE, FRONTEND_UPDATE } from '../../core/requests/mqtt';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -8,12 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class AdvancedSettingsService {
   private http = inject(HttpClient);
-
   public advSettings = signal("");
-
-  constructor() {
-    this.getSettings().subscribe();
-  }
 
   public getSettings() {
     return this.http.get(ADVANCED, {

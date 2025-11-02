@@ -1,7 +1,7 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { OS, TYPE } from '../core/consts/requests';
-import { GetInfoInterface, OSInterface, ProtocolInterface } from '../core/interfaces/core';
+import { OS, TYPE } from '../../core/requests/common';
+import { GetInfoInterface, OSInterface, ProtocolInterface } from '../../core/interfaces/core';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 

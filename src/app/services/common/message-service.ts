@@ -1,5 +1,5 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
-import { MessageInterface, MessageTypeInterface } from '../core/interfaces/messages';
+import { MessageInterface, MessageTypeInterface } from '../../core/interfaces/messages';
 
 @Injectable({
   providedIn: 'root',

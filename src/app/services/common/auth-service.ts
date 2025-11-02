@@ -1,11 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { AUTH } from '../core/consts/requests';
-import { TokenInterface } from '../core/interfaces/auth';
+import { AUTH } from '../../core/requests/common';
+import { TokenInterface } from '../../core/interfaces/auth';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { AUTH_ROUTE } from '../core/consts/routes';
+import { AUTH_ROUTE } from '../../core/consts/routes';
 
 @Injectable({
   providedIn: 'root',

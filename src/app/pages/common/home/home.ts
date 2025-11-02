@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BlockHead } from '../../components/block-head/block-head';
 import { Body } from '../../components/body/body';
 import { HOME_RU } from '../../../core/localization/ru/home-ru';
@@ -15,6 +15,8 @@ import { HomeConsole } from './home-components/home-console/home-console';
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {
   protected readonly HOME_RU = HOME_RU;

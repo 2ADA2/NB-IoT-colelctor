@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { ADVANCED_ROUTE, HOME_ROUTE, SETTINGS_ROUTE, SOURCES_ROUTE } from '../../../consts/routes';
 import { NAV_RU } from '../../../localization/ru/nav-ru';
@@ -17,7 +17,7 @@ import { tap } from 'rxjs/operators';
   standalone: true,
 })
 
-export class Navigation {
+export class Navigation implements OnInit {
   protected readonly ADVANCED = ADVANCED_ROUTE;
   protected readonly HOME = HOME_ROUTE;
   protected readonly SOURCES = SOURCES_ROUTE;
@@ -27,7 +27,7 @@ export class Navigation {
   private router = inject(Router);
   private currentUrl = this.router.url;
 
-  constructor() {
+  ngOnInit() {
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .pipe(tap((route) => this.currentUrl = route.url))

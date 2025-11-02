@@ -2,8 +2,9 @@ import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { Core } from './core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
-import { SettingsData, SettingsFormData } from '../core/interfaces/settings';
-import { MQTT_SET_SETTINGS, MQTT_SETTINGS, SUB_SET_SETTINGS, SUB_SETTINGS } from '../core/consts/requests';
+import { SettingsData, SettingsFormData } from '../../core/interfaces/settings';
+import { SUB_SET_SETTINGS, SUB_SETTINGS } from '../../core/requests/sub';
+import { MQTT_SET_SETTINGS, MQTT_SETTINGS } from "../../core/requests/mqtt";
 
 @Injectable({
   providedIn: 'root',

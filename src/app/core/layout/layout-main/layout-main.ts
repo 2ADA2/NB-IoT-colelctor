@@ -2,7 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { Header } from '../components/header/header';
 import { Navigation } from '../components/navigation/navigation';
 import { RouterOutlet } from '@angular/router';
-import { Core } from '../../../services/core';
+import { Core } from '../../../services/common/core';
 import { Loading } from '../../../pages/common/loading/loading';
 import { MessageContainer } from '../components/message-container/message-container';
 
