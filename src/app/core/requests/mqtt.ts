@@ -6,3 +6,7 @@ export const MQTT_SET_SETTINGS: string = MQTT + "/set settings";
 export const ADVANCED: string = MQTT + "/Advanced%20settings";
 export const BACKEND_UPDATE: string = MQTT + "/backend%20update";
 export const FRONTEND_UPDATE: string = MQTT + "/frontend%update";
+
+export const SOURCES_GET: string = MQTT + "/devInfoList";
+export const STATUS_GET: string = MQTT + "/state";
+export const STATUS_SET: string = MQTT + "/set%20state";

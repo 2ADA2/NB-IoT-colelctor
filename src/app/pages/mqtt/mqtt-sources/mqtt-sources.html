@@ -6,6 +6,14 @@
   </app-block-head>
 
   <app-body class="h-full">
+    <div class="connection-container">
+      <button class="standard-button" (click)="changeStatus()">{{ btnText }}</button>
+      <div class="flex gap-4 mt-2">
+        <span>{{ SOURCES_RU.STATUS }}</span>
+        <span>{{ statusText }}</span>
+      </div>
 
+    </div>
+    <app-table></app-table>
   </app-body>
 </div>

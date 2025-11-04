@@ -33,9 +33,9 @@ export class HomeConsole implements OnInit {
 
   ngOnInit() {
     runInInjectionContext(this.injector, () => {
-        effect(() => {
-          this.consoleText.setValue(this.homeService.cmd());
-        });
+      effect(() => {
+        this.consoleText.setValue(this.homeService.cmd());
+      });
     });
   }
 

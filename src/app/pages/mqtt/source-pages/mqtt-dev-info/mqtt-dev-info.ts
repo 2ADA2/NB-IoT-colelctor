@@ -9,5 +9,5 @@ import { HOME_RU } from "../../../../core/localization/ru/home-ru";
 })
 export class MqttDevInfo {
 
-    protected readonly HOME_RU = HOME_RU;
+  protected readonly HOME_RU = HOME_RU;
 }

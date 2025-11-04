@@ -10,7 +10,7 @@ describe('SubSources', () => {
     await TestBed.configureTestingModule({
       imports: [SubSources],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SubSources);
     component = fixture.componentInstance;

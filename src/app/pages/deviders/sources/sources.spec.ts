@@ -10,7 +10,7 @@ describe('Sources', () => {
     await TestBed.configureTestingModule({
       imports: [Sources],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(Sources);
     component = fixture.componentInstance;
