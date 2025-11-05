@@ -1,0 +1,80 @@
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
+import {
+  ConnectionStateInterface,
+  DeviceInfoInterface,
+  DevInfoListIntreface,
+  FormattedSourcesInterface,
+} from '../../core/interfaces/sources';
+import { HttpClient } from '@angular/common/http';
+import { SOURCES_GET, STATUS_GET, STATUS_SET } from '../../core/requests/mqtt';
+import { tap } from 'rxjs/operators';
+import { MessageService } from '../common/message-service';
+import { SOURCES_ERRORS_RU } from '../../core/localization/ru/sources-ru';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class SourceService {
+  private http = inject(HttpClient);
+  private messageService = inject(MessageService);
+
+  public connectionState: WritableSignal<0 | 1 | 2> = signal(2); // 2 - loading  1 - connected  0 - no
+
+  public setState() {
+    if (this.connectionState() === 2) {
+      this.messageService.createError(SOURCES_ERRORS_RU.ERROR, SOURCES_ERRORS_RU.ERROR_MESSAGE);
+      return;
+    }
+    this.http.post(STATUS_SET, {
+      MQTT_connect: !this.connectionState(),
+    }, {
+      responseType: "text" as const,
+    }).pipe(tap((res: unknown) => {
+      if (res === "200 OK") {
+        this.getState().subscribe();
+      }
+    })).subscribe();
+    this.connectionState.set(2);
+  }
+
+  public getState() {
+    return this.http.get<ConnectionStateInterface>(STATUS_GET,
+    ).pipe(tap((res: ConnectionStateInterface) => {
+      this.connectionState.set(res.ConnectionState ? 1 : 0);
+    }));
+  }
+
+
+  public sources: DeviceInfoInterface[] = [];
+  public formattedSources: WritableSignal<FormattedSourcesInterface[]> = signal([]);
+
+  public updateSources() {
+    return this.http.get<DevInfoListIntreface>(SOURCES_GET,
+    ).pipe(tap((res: DevInfoListIntreface) => {
+      this.sources = res.DevinfoList;
+      this.formattedSources.set(this.formatSources(res.DevinfoList));
+    }));
+  }
+
+  private formatSources(devInfo: DeviceInfoInterface[]) {
+    let formatted: FormattedSourcesInterface[] = [];
+    devInfo.forEach((e: DeviceInfoInterface) => {
+      formatted.push({
+        id: e.Device.DevId,
+        time: e.DeviceAttr.localTime,
+        battery: e.DeviceAttr.Metrics.Battery,
+        signal: e.DeviceAttr.Metrics["GSM siglevel"],
+        temperature: e.DeviceAttr.Metrics.Temperature,
+        online: e.DeviceAttr.Metrics.Online,
+      });
+    });
+
+    formatted = formatted.sort((a, b) => {
+      const aid = Number(a.id.split(":").join(""));
+      const bid = Number(b.id.split(":").join(""));
+      return aid > bid ? 1 : -1;
+    });
+
+    return formatted;
+  }
+}

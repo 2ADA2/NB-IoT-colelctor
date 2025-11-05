@@ -1,4 +1,12 @@
-import { Component, effect, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  Injector,
+  OnInit,
+  runInInjectionContext,
+} from '@angular/core';
 import { BlockHead } from '../../components/block-head/block-head';
 import { Body } from '../../components/body/body';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
@@ -6,7 +14,7 @@ import { MatFormField } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LWData } from '../../../core/data/settingsData';
-import { SettingsService } from '../../../services/settings-service';
+import { SettingsService } from '../../../services/common/settings-service';
 import { SettingsData } from '../../../core/interfaces/settings';
 
 @Component({
@@ -23,9 +31,12 @@ import { SettingsData } from '../../../core/interfaces/settings';
   ],
   templateUrl: './settings.html',
   styleUrl: './settings.scss',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Settings {
+export class Settings implements OnInit {
   private settingsService = inject(SettingsService);
+  private injector = inject(Injector);
 
   formGroup = new FormGroup({
     HostName: new FormControl('', Validators.required),
@@ -41,24 +52,26 @@ export class Settings {
     LWQos: new FormControl(0, Validators.required),
   });
 
-  constructor() {
-    effect(() => {
-      const settings: SettingsData | null = this.settingsService.settings();
-      if (settings) {
-        this.formGroup.setValue({
-          HostName: settings.ConnectionDetails.HostName,
-          Port: settings.ConnectionDetails.Port,
-          ClientID: settings.ConnectionDetails.ClientID,
-          CleanSession: settings.ConnectionDetails.CleanSession,
-          KeepAlive: settings.ConnectionDetails.KeepAlive,
-          Name: settings.Credentials.UserName,
-          Password: settings.Credentials.Password,
-          LWTopic: settings.LastWill.LastWillTopic,
-          LWMessage: settings.LastWill.LastWillMessage,
-          LWRetain: settings.LastWill.LastWillRetain,
-          LWQos: settings.LastWill.LastWillQos,
-        });
-      }
+  public ngOnInit() {
+    runInInjectionContext(this.injector, () => {
+      effect(() => {
+        const settings: SettingsData | null = this.settingsService.settings();
+        if (settings) {
+          this.formGroup.setValue({
+            HostName: settings.ConnectionDetails.HostName,
+            Port: settings.ConnectionDetails.Port,
+            ClientID: settings.ConnectionDetails.ClientID,
+            CleanSession: settings.ConnectionDetails.CleanSession,
+            KeepAlive: settings.ConnectionDetails.KeepAlive,
+            Name: settings.Credentials.UserName,
+            Password: settings.Credentials.Password,
+            LWTopic: settings.LastWill.LastWillTopic,
+            LWMessage: settings.LastWill.LastWillMessage,
+            LWRetain: settings.LastWill.LastWillRetain,
+            LWQos: settings.LastWill.LastWillQos,
+          });
+        }
+      });
     });
   }
 

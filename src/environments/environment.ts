@@ -1,4 +1,4 @@
 export const environment = {
   API_URL: '',
-  VERSION: '0.3.3',
+  VERSION: '0.7.2',
 };

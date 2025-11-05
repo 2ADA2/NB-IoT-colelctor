@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { ADVANCED_ROUTE, HOME_ROUTE, SETTINGS_ROUTE, SOURCES_ROUTE } from '../../../consts/routes';
 import { NAV_RU } from '../../../localization/ru/nav-ru';
 import { MatIcon } from '@angular/material/icon';
 import { filter } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-navigation',
@@ -17,20 +18,23 @@ import { tap } from 'rxjs/operators';
   standalone: true,
 })
 
-export class Navigation {
+export class Navigation implements OnInit {
   protected readonly ADVANCED = ADVANCED_ROUTE;
   protected readonly HOME = HOME_ROUTE;
   protected readonly SOURCES = SOURCES_ROUTE;
   protected readonly SETTINGS = SETTINGS_ROUTE;
   protected readonly NAV_RU = NAV_RU;
 
+  private destroyRef = inject(DestroyRef);
   private router = inject(Router);
   private currentUrl = this.router.url;
 
-  constructor() {
+  public ngOnInit() {
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
-      .pipe(tap((route) => this.currentUrl = route.url))
+      .pipe(
+        tap((route) => this.currentUrl = route.url),
+        takeUntilDestroyed(this.destroyRef))
       .subscribe();
   }
 

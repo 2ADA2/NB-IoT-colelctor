@@ -1,1 +1,56 @@
-<p>table works!</p>
+<table class="sources-table">
+  <thead>
+  <tr>
+    <th class="head-id">ID</th>
+    <th class="head-time">Local Time</th>
+    <th class="head-signal">GSM Signal Level</th>
+    <th class="head-battery">Battery</th>
+    <th class="head-temperature">Temperature</th>
+  </tr>
+  </thead>
+  <tbody>
+    @if (sources.length) {
+      @for (device of sources; track device.id) {
+        <tr
+          [class.online]="device.online"
+          [class.offline]="!device.online"
+          routerLink = "{{SOURCES_ROUTE}}\{{device.id}}"
+        >
+          <td class="id">
+            {{ device.id }}
+          </td>
+          <td class="time">
+            {{ device.time }}
+          </td>
+          <td class="signal">
+            {{ device.signal }}
+          </td>
+          <td class="battery">
+            {{ device.battery }}%
+          </td>
+          <td class="temperature">
+            {{ device.temperature }}°C
+          </td>
+        </tr>
+      }
+    } @else{
+        <tr>
+          <td class="id">
+            -
+          </td>
+          <td class="time">
+            -
+          </td>
+          <td class="signal">
+            -
+          </td>
+          <td class="battery">
+            -
+          </td>
+          <td class="temperature">
+            -
+          </td>
+        </tr>
+    }
+  </tbody>
+</table>

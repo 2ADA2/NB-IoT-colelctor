@@ -61,7 +61,7 @@
         <span>Last-Will Qos</span>
         <mat-form-field class="my-select" style="max-width: 300px;">
           <mat-select formControlName="LWQos">
-            @for (lw of LWData; track lw) {
+            @for (lw of LWData; track lw.val) {
               <mat-option [value]="lw.val">{{ lw.viewValue }}</mat-option>
             }
           </mat-select>
@@ -69,7 +69,5 @@
       </div>
       <button class="standard-button m-auto" (click)="saveSettings()">Сохранить</button>
     </app-body>
-
   </form>
-
 </div>

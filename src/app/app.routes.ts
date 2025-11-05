@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { ADVANCED_ROUTE, AUTH_ROUTE, HOME_ROUTE, SETTINGS_ROUTE, SOURCES_ROUTE } from './core/consts/routes';
-import { Sources } from './pages/common/sources/sources';
 import { Home } from './pages/common/home/home';
 import { authGuard } from './core/guards/auth-guard';
 import { authRouteGuard } from './core/guards/auth-route-guard';
+import { Sources } from './pages/deviders/sources/sources';
 
 export const routes: Routes = [
   {

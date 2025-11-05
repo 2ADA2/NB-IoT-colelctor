@@ -1,7 +1,15 @@
-import { Component, effect, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  Injector,
+  OnInit,
+  runInInjectionContext,
+} from '@angular/core';
 import { HOME_RU } from "../../../../../core/localization/ru/home-ru";
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { HomeService } from '../../../../../services/home-service';
+import { HomeService } from '../../../../../services/common/home-service';
 import { tap } from 'rxjs/operators';
 import { MatIcon } from '@angular/material/icon';
 
@@ -13,16 +21,21 @@ import { MatIcon } from '@angular/material/icon';
   ],
   templateUrl: './home-console.html',
   styleUrl: './home-console.scss',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeConsole {
+export class HomeConsole implements OnInit {
   private homeService: HomeService = inject(HomeService);
+  private injector = inject(Injector);
 
   public consoleControl = new FormControl("");
   public consoleText = new FormControl(this.homeService.cmd());
 
-  constructor() {
-    effect(() => {
-      this.consoleText.setValue(this.homeService.cmd());
+  public ngOnInit() {
+    runInInjectionContext(this.injector, () => {
+      effect(() => {
+        this.consoleText.setValue(this.homeService.cmd());
+      });
     });
   }
 

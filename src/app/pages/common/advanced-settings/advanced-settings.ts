@@ -1,10 +1,18 @@
-import { Component, effect, inject } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  Injector,
+  runInInjectionContext,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { BlockHead } from "../../components/block-head/block-head";
 import { Body } from '../../components/body/body';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { AdvancedSettingsService } from '../../../services/advanced-settings-service';
+import { AdvancedSettingsService } from '../../../services/common/advanced-settings-service';
 import { ADV_SETTINGS_ERR_RU, ADV_SETTINGS_RU } from '../../../core/localization/ru/adv-settings-ru';
-import { MessageService } from '../../../services/message-service';
+import { MessageService } from '../../../services/common/message-service';
 
 
 @Component({
@@ -16,22 +24,32 @@ import { MessageService } from '../../../services/message-service';
   ],
   templateUrl: './advanced-settings.html',
   styleUrl: './advanced-settings.scss',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdvancedSettings {
+export class AdvancedSettings implements OnInit {
+  protected readonly ADV_SETTINGS_RU = ADV_SETTINGS_RU;
+
+  private injector = inject(Injector);
   private advSettingsService = inject(AdvancedSettingsService);
   private messageService = inject(MessageService);
 
   public consoleText = new FormControl("");
 
-  constructor() {
-    effect(() => {
-      this.consoleText.setValue(this.advSettingsService.advSettings());
+  public ngOnInit() {
+    this.advSettingsService.getSettings().subscribe();
+
+    runInInjectionContext(this.injector, () => {
+      effect(() => {
+        this.consoleText.setValue(this.advSettingsService.advSettings());
+      });
     });
   }
 
   public updateSettings() {
     this.advSettingsService.setSettings(this.consoleText.value || "");
   }
+
 
   public frontFileName = "";
   private frontFile: File | null = null;
@@ -56,6 +74,7 @@ export class AdvancedSettings {
     }
   }
 
+
   public backFileName = "";
   private backFile: File | null = null;
 
@@ -70,7 +89,7 @@ export class AdvancedSettings {
     }
   }
 
-  sendFiles() {
+  public sendFiles() {
     if (!this.frontFile && !this.backFile) {
       this.messageService.createError(
         ADV_SETTINGS_ERR_RU.FILE_ERROR,
@@ -85,6 +104,4 @@ export class AdvancedSettings {
       this.advSettingsService.saveBackend(this.backFile);
     }
   }
-
-  protected readonly ADV_SETTINGS_RU = ADV_SETTINGS_RU;
 }
