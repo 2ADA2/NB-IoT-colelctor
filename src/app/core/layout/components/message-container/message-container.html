@@ -2,8 +2,8 @@
   @for (message of messages(); track message.id) {
     <div class="message {{message.type}} flex flex-col">
       <button (click)="deleteMessage(message.id)">x</button>
-      <h5>{{message.header}}</h5>
-      <p>{{message.message}}</p>
+      <h5>{{ message.header }}</h5>
+      <p>{{ message.message }}</p>
     </div>
   }
 </aside>

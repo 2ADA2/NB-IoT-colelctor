@@ -1,13 +1,13 @@
-.standard-block{
+.standard-block {
   display: flex;
   flex-direction: column;
-  gap:4px;
+  gap: 4px;
 }
 
-.standard-container{
+.standard-container {
   display: grid;
   grid-template-columns: 250px 2fr;
-  gap:8px;
+  gap: 8px;
   width: 100%;
   max-width: 1000px;
   justify-content: center;
@@ -21,15 +21,17 @@
 }
 
 @media (max-width: 1000px) {
-  .standard-container{
+  .standard-container {
     grid-template-columns: 250px 1fr;
   }
 }
+
 @media (max-width: 600px) {
-  .standard-container{
+  .standard-container {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
-    gap:8px;
+    gap: 8px;
+
     & > :first-child {
       display: flex;
       justify-content: flex-start;

@@ -43,11 +43,11 @@ export class Settings {
 
   constructor() {
     effect(() => {
-      const settings:SettingsData|null = this.settingsService.settings();
+      const settings: SettingsData | null = this.settingsService.settings();
       if (settings) {
         this.formGroup.setValue({
-          HostName:settings.ConnectionDetails.HostName,
-          Port:settings.ConnectionDetails.Port,
+          HostName: settings.ConnectionDetails.HostName,
+          Port: settings.ConnectionDetails.Port,
           ClientID: settings.ConnectionDetails.ClientID,
           CleanSession: settings.ConnectionDetails.CleanSession,
           KeepAlive: settings.ConnectionDetails.KeepAlive,

@@ -13,7 +13,7 @@ export class HomeInfo {
 
   public os = "";
   public protocol = "";
-  public procInfo="";
+  public procInfo = "";
 
   constructor() {
     effect(() => {

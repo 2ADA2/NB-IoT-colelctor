@@ -10,25 +10,22 @@ import { tap } from 'rxjs/operators';
 export class HomeService {
   private http: HttpClient = inject(HttpClient);
 
-  public procInfo :WritableSignal<string> = signal("");
+  public procInfo: WritableSignal<string> = signal("");
 
   // proc-info-fn
 
-  public cmd :WritableSignal<string> = signal("");
+  public cmd: WritableSignal<string> = signal("");
   private cookieService = inject(CookieService);
 
-  public cmdGet(command:string) {
-    return this.http.post(CMD, { CMD:command }, {
-      headers:{
-        "Authorization": this.cookieService.get("token"),
-      },
+  public cmdGet(command: string) {
+    return this.http.post(CMD, { CMD: command }, {
       responseType: "text" as const,
-    }).pipe(tap((res:string) => {
+    }).pipe(tap((res: string) => {
       this.saveCmdText(res);
     }));
   }
 
-  public saveCmdText(val:string) {
+  public saveCmdText(val: string) {
     this.cmd.set(val);
   }
 

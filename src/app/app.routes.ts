@@ -23,7 +23,7 @@ export const routes: Routes = [
         path: "",
         loadComponent: () => import("./core/layout/layout-main/layout-main").then(m => m.LayoutMain),
         children: [
-          { path: "", redirectTo:HOME_ROUTE, pathMatch:"full" },
+          { path: "", redirectTo: HOME_ROUTE, pathMatch: "full" },
           { path: HOME_ROUTE, component: Home },
           {
             path: SETTINGS_ROUTE,

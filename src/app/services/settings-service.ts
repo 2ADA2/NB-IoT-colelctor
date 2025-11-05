@@ -3,7 +3,7 @@ import { Core } from './core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { SettingsData, SettingsFormData } from '../core/interfaces/settings';
-import {  MQTT_SET_SETTINGS, MQTT_SETTINGS, SUB_SET_SETTINGS, SUB_SETTINGS } from '../core/consts/requests';
+import { MQTT_SET_SETTINGS, MQTT_SETTINGS, SUB_SET_SETTINGS, SUB_SETTINGS } from '../core/consts/requests';
 
 @Injectable({
   providedIn: 'root',
@@ -51,7 +51,7 @@ export class SettingsService {
     }
   }
 
-  private setMqttSettings(form:SettingsFormData, route:string): void {
+  private setMqttSettings(form: SettingsFormData, route: string): void {
     this.http.post(route, {
       ConnectionDetails: {
         "CleanSession": form.CleanSession,

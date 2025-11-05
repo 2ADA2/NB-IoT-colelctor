@@ -22,10 +22,10 @@ export class Core {
     this.updateProtocol();
   }
 
-  public getInfo():GetInfoInterface {
+  public getInfo(): GetInfoInterface {
     return {
-      os: this.os||"",
-      protocol: this.protocol||"",
+      os: this.os || "",
+      protocol: this.protocol || "",
     };
   }
 

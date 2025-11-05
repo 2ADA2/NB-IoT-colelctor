@@ -20,6 +20,7 @@ header {
 
   & .program-header {
     align-items: center;
+
     & img {
       height: 30px;
       margin-right: 16px;
@@ -37,8 +38,9 @@ header {
     }
   }
 }
+
 @media (max-width: 500px) {
-  header{
+  header {
     padding: 0 20px;
     font-size: 20px;
   }
