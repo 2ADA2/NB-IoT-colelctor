@@ -24,7 +24,7 @@ export class MqttSources implements OnInit {
   public btnText = SOURCES_RU.LOADING;
   public statusText = SOURCES_RU.LOADING;
 
-  ngOnInit() {
+  public ngOnInit() {
     this.sourceService.getState().subscribe();
     runInInjectionContext(this.injector, () => {
       effect(() => {

@@ -31,7 +31,7 @@ export class HomeConsole implements OnInit {
   public consoleControl = new FormControl("");
   public consoleText = new FormControl(this.homeService.cmd());
 
-  ngOnInit() {
+  public ngOnInit() {
     runInInjectionContext(this.injector, () => {
       effect(() => {
         this.consoleText.setValue(this.homeService.cmd());

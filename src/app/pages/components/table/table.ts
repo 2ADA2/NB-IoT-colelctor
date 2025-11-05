@@ -1,10 +1,14 @@
 import { Component, effect, inject, Injector, OnInit, runInInjectionContext } from '@angular/core';
 import { SourceService } from '../../../services/mqtt/source-service';
 import { FormattedSourcesInterface } from '../../../core/interfaces/sources';
+import { RouterLink } from '@angular/router';
+import { SOURCES_ROUTE } from '../../../core/consts/routes';
 
 @Component({
   selector: 'app-table',
-  imports: [],
+  imports: [
+    RouterLink,
+  ],
   templateUrl: './table.html',
   styleUrl: './table.scss',
   standalone: true,
@@ -14,7 +18,7 @@ export class Table implements OnInit {
   private sourceService = inject(SourceService);
   public sources: FormattedSourcesInterface[] = [];
 
-  ngOnInit() {
+  public ngOnInit() {
     if (!this.sources.length) {
       this.sourceService.updateSources().subscribe();
     }
@@ -24,4 +28,6 @@ export class Table implements OnInit {
       });
     });
   }
+
+  protected readonly SOURCES_ROUTE = SOURCES_ROUTE;
 }

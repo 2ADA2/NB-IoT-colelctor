@@ -11,7 +11,11 @@
   <tbody>
     @if (sources.length) {
       @for (device of sources; track device.id) {
-        <tr [class.online]="device.online" [class.offline]="!device.online">
+        <tr
+          [class.online]="device.online"
+          [class.offline]="!device.online"
+          routerLink = "{{SOURCES_ROUTE}}\{{device.id}}"
+        >
           <td class="id">
             {{ device.id }}
           </td>

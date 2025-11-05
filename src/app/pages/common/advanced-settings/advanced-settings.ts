@@ -28,15 +28,15 @@ import { MessageService } from '../../../services/common/message-service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdvancedSettings implements OnInit {
+  protected readonly ADV_SETTINGS_RU = ADV_SETTINGS_RU;
 
   private injector = inject(Injector);
-
   private advSettingsService = inject(AdvancedSettingsService);
   private messageService = inject(MessageService);
 
   public consoleText = new FormControl("");
 
-  ngOnInit() {
+  public ngOnInit() {
     this.advSettingsService.getSettings().subscribe();
 
     runInInjectionContext(this.injector, () => {
@@ -49,6 +49,7 @@ export class AdvancedSettings implements OnInit {
   public updateSettings() {
     this.advSettingsService.setSettings(this.consoleText.value || "");
   }
+
 
   public frontFileName = "";
   private frontFile: File | null = null;
@@ -73,6 +74,7 @@ export class AdvancedSettings implements OnInit {
     }
   }
 
+
   public backFileName = "";
   private backFile: File | null = null;
 
@@ -87,7 +89,7 @@ export class AdvancedSettings implements OnInit {
     }
   }
 
-  sendFiles() {
+  public sendFiles() {
     if (!this.frontFile && !this.backFile) {
       this.messageService.createError(
         ADV_SETTINGS_ERR_RU.FILE_ERROR,
@@ -102,6 +104,4 @@ export class AdvancedSettings implements OnInit {
       this.advSettingsService.saveBackend(this.backFile);
     }
   }
-
-  protected readonly ADV_SETTINGS_RU = ADV_SETTINGS_RU;
 }

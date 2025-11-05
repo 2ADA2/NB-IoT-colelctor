@@ -17,7 +17,7 @@ export class HomeInfo implements OnInit {
   public protocol = "";
   public procInfo = "";
 
-  ngOnInit() {
+  public ngOnInit() {
     runInInjectionContext(this.injector, () => {
       effect(() => {
         const info = this.core.getInfo();

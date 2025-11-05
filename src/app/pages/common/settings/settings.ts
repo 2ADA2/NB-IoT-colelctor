@@ -52,7 +52,7 @@ export class Settings implements OnInit {
     LWQos: new FormControl(0, Validators.required),
   });
 
-  ngOnInit() {
+  public ngOnInit() {
     runInInjectionContext(this.injector, () => {
       effect(() => {
         const settings: SettingsData | null = this.settingsService.settings();
