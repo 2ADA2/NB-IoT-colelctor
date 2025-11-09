@@ -77,4 +77,14 @@ export class SourceService {
 
     return formatted;
   }
+
+  private id:string|null = null;
+
+  public setId(id:string|null) {
+    this.id = id;
+  }
+
+  public getId() {
+    return this.id;
+  }
 }

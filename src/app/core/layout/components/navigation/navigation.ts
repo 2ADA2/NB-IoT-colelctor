@@ -13,6 +13,7 @@ import { MatIcon } from '@angular/material/icon';
 import { filter } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { SourceService } from '../../../../services/mqtt/source-service';
 
 @Component({
   selector: 'app-navigation',
@@ -36,6 +37,7 @@ export class Navigation implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private currentUrl = signal(this.router.url);
+  private sourceService = inject(SourceService);
 
   public id: string | null = this.getID(this.route);
 
@@ -56,6 +58,7 @@ export class Navigation implements OnInit {
 
           const activeRoute: ActivatedRoute | null = this.route;
           this.id = this.getID(activeRoute);
+          this.sourceService.setId(this.id);
         }),
         takeUntilDestroyed(this.destroyRef))
       .subscribe();
