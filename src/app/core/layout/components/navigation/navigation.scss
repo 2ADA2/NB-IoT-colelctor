@@ -21,6 +21,42 @@
   }
 }
 
+.layout-nav .source-nav {
+  & .source-nav-btn {
+    width: 100%;
+  }
+
+  & .activated {
+    border: none;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: var(--back-white-color);
+      right: -10px;
+      rotate: 45deg;
+      top: calc(50% - 10px);
+    }
+  }
+
+  & .btn-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 32px;
+    height: 40px;
+    color: white;
+
+    &:hover {
+      background: var(--main-hover-color);
+    }
+  }
+}
+
 @media(max-width: 850px) {
   .layout-nav {
     width: 72px;

@@ -22,7 +22,35 @@
       <span>{{ NAV_RU.SOURCES }}</span>
     </a>
   </button>
-  <button class="nav-btn" [class.activated]="checkActivated(SETTINGS)">
+  @if (id) {
+    <nav class="source-nav">
+      <button class="source-nav-btn" [class.activated]="checkActivated(D_INFO_ROUTE)">
+        <a
+          class="btn-link"
+          [routerLink]="['/',  SOURCES_ROUTE, D_INFO_ROUTE, id]"
+        >
+          Информация
+        </a>
+      </button>
+      <button class="source-nav-btn" [class.activated]="checkActivated(D_SETTINGS_ROUTE)">
+        <a
+          class="btn-link" routerLink="{{SOURCES}}"
+          [routerLink]="['/',  SOURCES_ROUTE, D_SETTINGS_ROUTE, id]"
+        >
+          Настройки
+        </a>
+      </button>
+      <button class="source-nav-btn" [class.activated]="checkActivated(D_CMD_ROUTE)">
+        <a
+          class="btn-link"
+          [routerLink]="['/',  SOURCES_ROUTE, D_CMD_ROUTE, id]"
+        >
+          Команды
+        </a>
+      </button>
+    </nav>
+  }
+  <button class="nav-btn" [class.activated]="checkActivated(SETTINGS, true)">
     <a class="btn-link" routerLink="{{SETTINGS}}">
       <mat-icon
         aria-hidden="false"

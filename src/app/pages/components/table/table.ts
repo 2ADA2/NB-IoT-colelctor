@@ -2,7 +2,7 @@ import { Component, effect, inject, Injector, OnInit, runInInjectionContext } fr
 import { SourceService } from '../../../services/mqtt/source-service';
 import { FormattedSourcesInterface } from '../../../core/interfaces/sources';
 import { RouterLink } from '@angular/router';
-import { SOURCES_ROUTE } from '../../../core/consts/routes';
+import { D_INFO_ROUTE, SOURCES_ROUTE } from '../../../core/consts/routes';
 
 @Component({
   selector: 'app-table',
@@ -30,4 +30,5 @@ export class Table implements OnInit {
   }
 
   protected readonly SOURCES_ROUTE = SOURCES_ROUTE;
+  protected readonly D_INFO_ROUTE = D_INFO_ROUTE;
 }
