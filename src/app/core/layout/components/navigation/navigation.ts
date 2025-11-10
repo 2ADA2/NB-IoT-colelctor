@@ -8,7 +8,7 @@ import {
   SETTINGS_ROUTE,
   SOURCES_ROUTE,
 } from '../../../consts/routes';
-import { NAV_RU } from '../../../localization/ru/nav-ru';
+import { NAV_DEV_RU, NAV_RU } from '../../../localization/ru/nav-ru';
 import { MatIcon } from '@angular/material/icon';
 import { filter } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -46,6 +46,7 @@ export class Navigation implements OnInit {
       activeRoute = activeRoute.firstChild;
     }
     const params = activeRoute?.snapshot.params || {};
+    this.sourceService.setId(params['id'] ?? null);
     return params['id'] ?? null;
   }
 
@@ -58,7 +59,6 @@ export class Navigation implements OnInit {
 
           const activeRoute: ActivatedRoute | null = this.route;
           this.id = this.getID(activeRoute);
-          this.sourceService.setId(this.id);
         }),
         takeUntilDestroyed(this.destroyRef))
       .subscribe();
@@ -75,4 +75,5 @@ export class Navigation implements OnInit {
   protected readonly SOURCES_ROUTE = SOURCES_ROUTE;
   protected readonly D_SETTINGS_ROUTE = D_SETTINGS_ROUTE;
   protected readonly D_CMD_ROUTE = D_CMD_ROUTE;
+  protected readonly NAV_DEV_RU = NAV_DEV_RU;
 }

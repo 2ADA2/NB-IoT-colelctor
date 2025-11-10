@@ -1,11 +1,5 @@
-<div class="flex flex-col gap-1 h-full">
-  <h1>Устройства</h1>
-
-  <app-block-head>
-    Устройства подключенные по MQTT
-  </app-block-head>
-
-  <app-body class="h-full">
-    <p>hi</p>
-  </app-body>
-</div>
+@if (protocol === "sub") {
+  <app-sub-dev-info></app-sub-dev-info>
+} @else {
+  <app-mqtt-dev-info></app-mqtt-dev-info>
+}

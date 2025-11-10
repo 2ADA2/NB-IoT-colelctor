@@ -29,7 +29,7 @@
           class="btn-link"
           [routerLink]="['/',  SOURCES_ROUTE, D_INFO_ROUTE, id]"
         >
-          Информация
+          {{ NAV_DEV_RU.INFO }}
         </a>
       </button>
       <button class="source-nav-btn" [class.activated]="checkActivated(D_SETTINGS_ROUTE)">
@@ -37,7 +37,7 @@
           class="btn-link" routerLink="{{SOURCES}}"
           [routerLink]="['/',  SOURCES_ROUTE, D_SETTINGS_ROUTE, id]"
         >
-          Настройки
+          {{ NAV_DEV_RU.SETTINGS }}
         </a>
       </button>
       <button class="source-nav-btn" [class.activated]="checkActivated(D_CMD_ROUTE)">
@@ -45,7 +45,7 @@
           class="btn-link"
           [routerLink]="['/',  SOURCES_ROUTE, D_CMD_ROUTE, id]"
         >
-          Команды
+          {{ NAV_DEV_RU.CMD }}
         </a>
       </button>
     </nav>

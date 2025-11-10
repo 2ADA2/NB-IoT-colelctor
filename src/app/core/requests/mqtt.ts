@@ -10,3 +10,5 @@ export const FRONTEND_UPDATE: string = MQTT + "/frontend%update";
 export const SOURCES_GET: string = MQTT + "/devInfoList";
 export const STATUS_GET: string = MQTT + "/state";
 export const STATUS_SET: string = MQTT + "/set%20state";
+
+export const D_INFO_GET: string = MQTT + "/DBState/";

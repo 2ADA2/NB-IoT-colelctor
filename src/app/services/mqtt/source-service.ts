@@ -18,6 +18,7 @@ export class SourceService {
   private http = inject(HttpClient);
   private messageService = inject(MessageService);
 
+  // connection state block
   public connectionState: WritableSignal<0 | 1 | 2> = signal(2); // 2 - loading  1 - connected  0 - no
 
   public setState() {
@@ -44,7 +45,7 @@ export class SourceService {
     }));
   }
 
-
+  // sources block
   public sources: DeviceInfoInterface[] = [];
   public formattedSources: WritableSignal<FormattedSourcesInterface[]> = signal([]);
 
@@ -78,6 +79,7 @@ export class SourceService {
     return formatted;
   }
 
+  // current device block
   private id:string|null = null;
 
   public setId(id:string|null) {
@@ -86,5 +88,9 @@ export class SourceService {
 
   public getId() {
     return this.id;
+  }
+
+  public getDeviceById(id:string) {
+    return this.sources.find(e => e.Device.DevId === id);
   }
 }
