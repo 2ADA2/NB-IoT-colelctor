@@ -53,11 +53,11 @@ export const routes: Routes = [
           },
           {
             path: SOURCES_ROUTE + "/" + D_SETTINGS_ROUTE + "/:id",
-            loadComponent: () => import("./pages/dividers/source-pages/dev-info/dev-info").then(m => m.DevInfo),
+            loadComponent: () => import("./pages/dividers/source-pages/dev-settings/dev-settings").then(m => m.DevSettings),
           },
           {
             path: SOURCES_ROUTE + "/" + D_CMD_ROUTE + "/:id",
-            loadComponent: () => import("./pages/dividers/source-pages/dev-info/dev-info").then(m => m.DevInfo),
+            loadComponent: () => import("./pages/dividers/source-pages/dev-cmd/dev-cmd").then(m => m.DevCmd),
           },
 
           { path: "**", redirectTo: HOME_ROUTE },

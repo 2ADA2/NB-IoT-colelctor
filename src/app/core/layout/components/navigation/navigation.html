@@ -29,7 +29,13 @@
           class="btn-link"
           [routerLink]="['/',  SOURCES_ROUTE, D_INFO_ROUTE, id]"
         >
-          {{ NAV_DEV_RU.INFO }}
+          <mat-icon
+            class = "source-nav-icon"
+            aria-hidden="false"
+            aria-label="Settings icon"
+            fontIcon="info"
+          ></mat-icon>
+          <span>{{ NAV_DEV_RU.INFO }}</span>
         </a>
       </button>
       <button class="source-nav-btn" [class.activated]="checkActivated(D_SETTINGS_ROUTE)">
@@ -37,7 +43,13 @@
           class="btn-link" routerLink="{{SOURCES}}"
           [routerLink]="['/',  SOURCES_ROUTE, D_SETTINGS_ROUTE, id]"
         >
-          {{ NAV_DEV_RU.SETTINGS }}
+          <mat-icon
+            class = "source-nav-icon"
+            aria-hidden="false"
+            aria-label="Settings icon"
+            fontIcon="display_settings"
+          ></mat-icon>
+          <span>{{ NAV_DEV_RU.SETTINGS }}</span>
         </a>
       </button>
       <button class="source-nav-btn" [class.activated]="checkActivated(D_CMD_ROUTE)">
@@ -45,7 +57,13 @@
           class="btn-link"
           [routerLink]="['/',  SOURCES_ROUTE, D_CMD_ROUTE, id]"
         >
-          {{ NAV_DEV_RU.CMD }}
+          <mat-icon
+            class = "source-nav-icon"
+            aria-hidden="false"
+            aria-label="Settings icon"
+            fontIcon="schedule_send"
+          ></mat-icon>
+          <span>{{ NAV_DEV_RU.CMD }}</span>
         </a>
       </button>
     </nav>

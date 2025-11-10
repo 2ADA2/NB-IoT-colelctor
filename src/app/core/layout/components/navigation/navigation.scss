@@ -65,4 +65,18 @@
       display: none;
     }
   }
+  .source-nav {
+    width: 72px;
+    & button {
+      & a{
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+      }
+      & span {
+        display: none;
+      }
+    }
+  }
 }

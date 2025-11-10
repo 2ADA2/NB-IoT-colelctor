@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-loading',
-  imports: [],
+  imports: [
+    NgOptimizedImage,
+  ],
   templateUrl: './loading.html',
   styleUrl: './loading.scss',
   standalone: true,
