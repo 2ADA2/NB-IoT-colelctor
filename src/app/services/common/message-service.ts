@@ -21,21 +21,16 @@ export class MessageService {
       const id = new Date().toISOString() + "ID";
       const copy = new Map(prev);
       copy.set(id, { id, type, message, header });
+      setTimeout(() => {
+        this.deleteMessage(id);
+      }, 5000);
       return copy;
     });
   }
 
   public createError(header: string, message: string): void {
     const type = "danger";
-    this.messages.update((prev) => {
-      const id = new Date().toISOString() + "ID";
-      const copy = new Map(prev);
-      copy.set(id, { id, type, message, header });
-      setTimeout(() => {
-        this.deleteMessage(id);
-      }, 5000);
-      return copy;
-    });
+    this.newMessage(header, message, type);
   }
 
   public deleteMessage(id: string) {

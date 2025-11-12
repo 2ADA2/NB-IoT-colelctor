@@ -67,13 +67,15 @@
   }
   .source-nav {
     width: 72px;
+
     & button {
-      & a{
+      & a {
         padding: 0 !important;
         display: flex !important;
         align-items: center;
         justify-content: center;
       }
+
       & span {
         display: none;
       }

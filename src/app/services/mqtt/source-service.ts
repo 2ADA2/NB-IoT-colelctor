@@ -6,7 +6,7 @@ import {
   FormattedSourcesInterface,
 } from '../../core/interfaces/sources';
 import { HttpClient } from '@angular/common/http';
-import { DB_GET, SOURCES_GET, STATUS_GET, STATUS_SET } from '../../core/requests/mqtt';
+import { DB_GET, DB_SET, SOURCES_GET, STATUS_GET, STATUS_SET } from '../../core/requests/mqtt';
 import { tap } from 'rxjs/operators';
 import { MessageService } from '../common/message-service';
 import { SOURCES_ERRORS_RU } from '../../core/localization/ru/sources-ru';
@@ -81,13 +81,13 @@ export class SourceService {
 
   // current device block
   private id: string | null = null;
-  private dbstate:WritableSignal<boolean> = signal(false);
+  private dbstate: WritableSignal<boolean> = signal(false);
 
   public setId(id: string | null) {
     const oldId = this.id;
     this.id = id;
     if (id && id !== oldId) {
-      this.updateDBState(id).pipe(tap((res:DBStateInterface) => {
+      this.updateDBState(id).pipe(tap((res: DBStateInterface) => {
         this.dbstate.set(res.PutDBState);
       })).subscribe();
     }
@@ -113,11 +113,22 @@ export class SourceService {
     this.dbstate.set(state);
   }
 
+  public putInDB(DBNum: number, state = true) {
+    return this.http.post(DB_SET + this.id, {
+      DBSettings: {
+        Dev_numDB: DBNum,
+        State: state,
+      },
+    });
+  }
+
   // Status but mask parse
-  public getErrors = (bitVector:string) => {
+  public getErrors = (bitVector: string) => {
     const errors = [];
+    const bitMask = parseInt(bitVector, 16);
+
     for (let i = 0; i < 16; i++) {
-      if (bitVector && (1 << i)) {
+      if (bitMask & (1 << i)) {
         errors.push(i);
       }
     }

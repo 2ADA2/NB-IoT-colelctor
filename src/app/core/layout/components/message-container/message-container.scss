@@ -3,7 +3,7 @@
   right: 0;
   bottom: 0;
   width: 400px;
-  height: 200px;
+  height: 500px;
   padding: 10px;
   overflow-y: auto;
   transition-duration: 100ms;
@@ -13,10 +13,11 @@
     width: 100%;
     padding: 10px;
     position: relative;
-    background: var(--text-light-color);
+    background: rgba(215, 215, 215, 0.7);
     transition-duration: 100ms;
     animation: show-message 0.3s;
     pointer-events: auto;
+    border-radius: 4px;
 
     & button {
       position: absolute;
@@ -32,8 +33,12 @@
   }
 
   & .danger {
-    background: #ffb9d8;
+    background: rgba(255, 185, 216, 0.7);
 
+  }
+
+  & .success {
+    background: rgba(185, 255, 205, 0.7);
   }
 }
 

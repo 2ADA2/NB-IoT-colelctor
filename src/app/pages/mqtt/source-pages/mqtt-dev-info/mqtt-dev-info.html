@@ -1,112 +1,121 @@
-@if (!device){
+@if (!device) {
   <div class="flex flex-col gap-1">
-    <h1>{{DEV_INFO_RU.HEADER}}<sub>{{id}}</sub></h1>
+    <h1>{{ DEV_INFO_RU.HEADER }}<sub>{{ id }}</sub></h1>
     <app-block-head>
-      {{DEV_STATUS_RU_ERRORS['404']}}
+      {{ DEV_STATUS_RU_ERRORS['404'] }}
     </app-block-head>
     <app-body>
     </app-body>
   </div>
-} @else{
+} @else {
   <div class="flex flex-col gap-1">
-    <h1>{{DEV_INFO_RU.HEADER}}<sub>{{id}}</sub></h1>
+    <h1>{{ DEV_INFO_RU.HEADER }}<sub>{{ id }}</sub></h1>
     <app-block-head>
-      {{DEV_INFO_RU.INFO}}
+      {{ DEV_INFO_RU.INFO }}
     </app-block-head>
     <app-body>
-      <div class = "standard-container bigger-container">
-        <span>{{DEV_INFO_BLOCK_RU.ID}}:</span>
-        <span>{{id}}</span>
+      <div class="standard-container bigger-container">
+        <span>{{ DEV_INFO_BLOCK_RU.ID }}:</span>
+        <span>{{ id }}</span>
       </div>
-      <div class = "standard-container bigger-container">
-        <span>{{DEV_INFO_BLOCK_RU.MODEL}}:</span>
-        <span>{{device.Device.DevName}}</span>
+      <div class="standard-container bigger-container">
+        <span>{{ DEV_INFO_BLOCK_RU.MODEL }}:</span>
+        <span>{{ device.Device.DevName }}</span>
       </div>
-      <div class = "standard-container bigger-container">
-        <span>{{DEV_INFO_BLOCK_RU.SW_VERSION}}:</span>
-        <span>{{device.Device["SoftVer."]}}</span>
+      <div class="standard-container bigger-container">
+        <span>{{ DEV_INFO_BLOCK_RU.SW_VERSION }}:</span>
+        <span>{{ device.Device["SoftVer."] }}</span>
       </div>
-      <div class = "standard-container bigger-container">
-        <span>{{DEV_INFO_BLOCK_RU.PL_VERSION}}:</span>
-        <span>{{device.Device["BoardRev."]}}</span>
+      <div class="standard-container bigger-container">
+        <span>{{ DEV_INFO_BLOCK_RU.PL_VERSION }}:</span>
+        <span>{{ device.Device["BoardRev."] }}</span>
       </div>
-      <div class = "standard-container bigger-container">
-        <span>{{DEV_INFO_BLOCK_RU.PR_VERSION}}:</span>
-        <span>{{device.Device["ProtoVer."]}}</span>
+      <div class="standard-container bigger-container">
+        <span>{{ DEV_INFO_BLOCK_RU.PR_VERSION }}:</span>
+        <span>{{ device.Device["ProtoVer."] }}</span>
       </div>
-      <div class = "standard-container bigger-container">
-        <span>{{DEV_INFO_BLOCK_RU.MODE}}:</span>
-        <span>{{device.DeviceAttr.Metrics.Mode}}</span>
+      <div class="standard-container bigger-container">
+        <span>{{ DEV_INFO_BLOCK_RU.MODE }}:</span>
+        <span>{{ device.DeviceAttr.Metrics.Mode }}</span>
       </div>
-      <div class = "standard-container bigger-container">
-        <span>{{DEV_INFO_BLOCK_RU.INTERVAL}}:</span>
-        <span>{{device.DeviceAttr.LinkRepeat}}</span>
+      <div class="standard-container bigger-container">
+        <span>{{ DEV_INFO_BLOCK_RU.INTERVAL }}:</span>
+        <span>{{ device.DeviceAttr.LinkRepeat }}</span>
       </div>
-      <div class = "standard-container bigger-container">
-        <span>{{DEV_INFO_BLOCK_RU.NETWORK_STATE}}:</span>
-        <span>{{device.DeviceAttr.Metrics.Online ? 'Online' : 'Offline'}}</span>
+      <div class="standard-container bigger-container">
+        <span>{{ DEV_INFO_BLOCK_RU.NETWORK_STATE }}:</span>
+        <span>{{ device.DeviceAttr.Metrics.Online ? 'Online' : 'Offline' }}</span>
       </div>
-      <div class = "standard-container bigger-container">
-        <span>{{DEV_INFO_BLOCK_RU.SAVE_IN_DB}}:</span>
-        <span>{{DBState ? "IN DB" : "NOT IN DB"}}</span>
+      <div class="standard-container bigger-container">
+        <span>{{ DEV_INFO_BLOCK_RU.SAVE_IN_DB }}:</span>
+        <span>{{ DBState ? "IN DB" : "NOT IN DB" }}</span>
       </div>
-      <div class = "standard-container bigger-container items-center">
-        <span class = "h-[30px]">{{DEV_INFO_BLOCK_RU.DB_NUM}}:</span>
+      <div class="standard-container bigger-container items-center">
+        <span class="h-[30px]">{{ DEV_INFO_BLOCK_RU.DB_NUM }}:</span>
         <div>
           <input
-            class = "standard-input "
+            class="standard-input "
             type="number"
             [formControl]="DBNum"
             min="0"
           >
         </div>
       </div>
-      <div class = "standard-container bigger-container items-center">
-        <div class = "relative left-1/4">
-          <button
-            class = "standard-button">{{DEV_INFO_BLOCK_RU.SAVE}}</button>
+      <div class="standard-container bigger-container items-center">
+        <div>
+          <button class="standard-button" (click)="putInDB()">{{ DEV_INFO_BLOCK_RU.SAVE }}</button>
+        </div>
+        <div>
+          <button class="standard-button" (click)="putInDB(false)">{{ DEV_INFO_BLOCK_RU.DELETE }}</button>
         </div>
       </div>
     </app-body>
 
     <app-block-head>
-      {{DEV_INFO_RU.STATUS}}
+      {{ DEV_INFO_RU.STATUS }}
     </app-block-head>
     <app-body>
+      @if (!states.length) {
+        <span>no data</span>
+      } @else {
+        @for (state of states; track state) {
+          <span>{{ state }}</span>
+        }
+      }
     </app-body>
 
     <app-block-head>
-      {{DEV_INFO_RU.STATE}}
+      {{ DEV_INFO_RU.STATE }}
     </app-block-head>
     <app-body>
       <div class="standard-container bigger-container">
-        <span>{{CONFIG_RU_STATE.CONFIG_STATE}}:</span>
-        <span>{{device.DeviceAttr.Configured ? CONFIG_RU_STATE.CONFIGURED : CONFIG_RU_STATE.NOT_CONFIGURED}}</span>
+        <span>{{ CONFIG_RU_STATE.CONFIG_STATE }}:</span>
+        <span>{{ device.DeviceAttr.Configured ? CONFIG_RU_STATE.CONFIGURED : CONFIG_RU_STATE.NOT_CONFIGURED }}</span>
       </div>
 
       <div class="standard-container bigger-container">
-        <span>{{CONFIG_RU_STATE.REGISTRATION_STATE}}:</span>
-        <span>{{device.DeviceAttr.Registered ? CONFIG_RU_STATE.REGISTERED : CONFIG_RU_STATE.NOT_REGISTERED}}</span>
+        <span>{{ CONFIG_RU_STATE.REGISTRATION_STATE }}:</span>
+        <span>{{ device.DeviceAttr.Registered ? CONFIG_RU_STATE.REGISTERED : CONFIG_RU_STATE.NOT_REGISTERED }}</span>
       </div>
 
       <div class="standard-container bigger-container">
-        <span>{{CONFIG_RU_STATE.DEVICE_TIME}}:</span>
-        <span>{{device.DeviceAttr.localTime.split("T").join(" / ")}}</span>
+        <span>{{ CONFIG_RU_STATE.DEVICE_TIME }}:</span>
+        <span>{{ device.DeviceAttr.localTime.split("T").join(" / ") }}</span>
       </div>
 
       <div class="standard-container bigger-container">
-        <span>{{CONFIG_RU_STATE.BATTERY_LEVEL}}:</span>
-        <span>{{device.DeviceAttr.Metrics.Battery}}</span>
+        <span>{{ CONFIG_RU_STATE.BATTERY_LEVEL }}:</span>
+        <span>{{ device.DeviceAttr.Metrics.Battery }}</span>
       </div>
 
       <div class="standard-container bigger-container">
-        <span>{{CONFIG_RU_STATE.CELL_RECEPTION_LEVEL}}:</span>
-        <span>{{device.DeviceAttr.Metrics["GSM siglevel"]}}</span>
+        <span>{{ CONFIG_RU_STATE.CELL_RECEPTION_LEVEL }}:</span>
+        <span>{{ device.DeviceAttr.Metrics["GSM siglevel"] }}</span>
       </div>
 
       <div class="standard-container bigger-container">
-        <span>{{CONFIG_RU_STATE.TEMPERATURE}}:</span>
-        <span>{{device.DeviceAttr.Metrics.Temperature}}</span>
+        <span>{{ CONFIG_RU_STATE.TEMPERATURE }}:</span>
+        <span>{{ device.DeviceAttr.Metrics.Temperature }}</span>
       </div>
     </app-body>
   </div>
