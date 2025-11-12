@@ -48,7 +48,24 @@
       </div>
       <div class = "standard-container bigger-container">
         <span>{{DEV_INFO_BLOCK_RU.SAVE_IN_DB}}:</span>
-        <span>NOT IN DB</span>
+        <span>{{DBState ? "IN DB" : "NOT IN DB"}}</span>
+      </div>
+      <div class = "standard-container bigger-container items-center">
+        <span class = "h-[30px]">{{DEV_INFO_BLOCK_RU.DB_NUM}}:</span>
+        <div>
+          <input
+            class = "standard-input "
+            type="number"
+            [formControl]="DBNum"
+            min="0"
+          >
+        </div>
+      </div>
+      <div class = "standard-container bigger-container items-center">
+        <div class = "relative left-1/4">
+          <button
+            class = "standard-button">{{DEV_INFO_BLOCK_RU.SAVE}}</button>
+        </div>
       </div>
     </app-body>
 

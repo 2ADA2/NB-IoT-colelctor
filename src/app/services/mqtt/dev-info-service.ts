@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { SourceService } from './source-service';
 import { HttpClient } from '@angular/common/http';
-import { D_INFO_GET } from '../../core/requests/mqtt';
+import { DB_GET } from '../../core/requests/mqtt';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class DevInfoService {
   private http: HttpClient = inject(HttpClient);
 
   public updateInfo() {
-    return this.http.get(D_INFO_GET).pipe(tap(info => {
+    return this.http.get(DB_GET).pipe(tap(info => {
       console.log(info);
     }));
   }
