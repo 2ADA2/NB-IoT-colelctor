@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DevInfo } from './dev-info';
+import { SubDevSettings } from './sub-dev-settings';
 
-describe('DevInfo', () => {
-  let component: DevInfo;
-  let fixture: ComponentFixture<DevInfo>;
+describe('SubDevSettings', () => {
+  let component: SubDevSettings;
+  let fixture: ComponentFixture<SubDevSettings>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DevInfo],
+      imports: [SubDevSettings]
     })
-      .compileComponents();
+    .compileComponents();
 
-    fixture = TestBed.createComponent(DevInfo);
+    fixture = TestBed.createComponent(SubDevSettings);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

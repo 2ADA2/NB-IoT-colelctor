@@ -3,6 +3,7 @@ export const DEV_INFO_RU = {
   INFO: "Информация",
   STATUS: "Статус",
   STATE: "Состояние",
+  NOT_FOUND: "Устройство не найдено",
 };
 
 export const DEV_INFO_BLOCK_RU = {
