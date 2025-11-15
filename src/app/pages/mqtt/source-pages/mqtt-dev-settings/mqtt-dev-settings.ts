@@ -1,15 +1,43 @@
-import { Component, effect, inject, Injector, OnInit, runInInjectionContext } from '@angular/core';
+import { Component, effect, inject, Injector, OnInit, runInInjectionContext, ViewEncapsulation } from '@angular/core';
 import { BlockHead } from '../../../components/block-head/block-head';
 import { Body } from '../../../components/body/body';
 import { SourceService } from '../../../../services/mqtt/source-service';
-import { DEV_INFO_RU, DEV_STATUS_RU_ERRORS } from '../../../../core/localization/ru/dev-info-ru';
-import { DEV_SETTINGS_RU } from '../../../../core/localization/ru/dev-settings-ru';
+import { DEV_SETTINGS_RU, MEAS_SETTINGS_RU } from '../../../../core/localization/ru/dev-settings-ru';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MatDatepicker,
+  MatDatepickerInput,
+  MatDatepickerModule,
+  MatDatepickerToggle,
+} from '@angular/material/datepicker';
+import { MatInput, MatInputModule } from '@angular/material/input';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatMomentDateModule, provideMomentDateAdapter } from '@angular/material-moment-adapter';
+import { CUSTOM_FORMATS } from '../../../../core/consts/angular-material-formats';
+import {
+  MatTimepicker,
+  MatTimepickerInput,
+  MatTimepickerModule,
+  MatTimepickerToggle,
+} from '@angular/material/timepicker';
 
 @Component({
   selector: 'app-mqtt-dev-settings',
   imports: [
     BlockHead,
     Body,
+    MatFormField,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatInput,
+    MatDatepicker,
+    MatFormFieldModule, MatInputModule, MatDatepickerModule,
+    MatMomentDateModule, ReactiveFormsModule, MatTimepickerInput,
+    MatTimepicker, MatTimepickerToggle, MatTimepickerModule,
+  ],
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    provideMomentDateAdapter(CUSTOM_FORMATS),
   ],
   templateUrl: './mqtt-dev-settings.html',
   styleUrl: './mqtt-dev-settings.scss',
@@ -18,7 +46,16 @@ export class MqttDevSettings implements OnInit {
   private injector: Injector = inject(Injector);
   private sourceService = inject(SourceService);
 
-  public id:string|null = null;
+  public id: string | null = null;
+
+  public formGroup: FormGroup = new FormGroup({
+    time: new FormControl(new Date()),
+    date: new FormControl(new Date()),
+    interval: new FormControl(0),
+    intervalTime: new FormControl(0),
+    mode: new FormControl(0),
+    filter: new FormControl(0),
+  });
 
   public ngOnInit() {
     runInInjectionContext(this.injector, () => {
@@ -28,7 +65,7 @@ export class MqttDevSettings implements OnInit {
     });
   }
 
-  protected readonly DEV_STATUS_RU_ERRORS = DEV_STATUS_RU_ERRORS;
-  protected readonly DEV_INFO_RU = DEV_INFO_RU;
+
   protected readonly DEV_SETTINGS_RU = DEV_SETTINGS_RU;
+  protected readonly MEAS_SETTINGS_RU = MEAS_SETTINGS_RU;
 }

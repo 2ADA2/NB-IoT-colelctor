@@ -7,23 +7,69 @@
     <app-body>
     </app-body>
   </div>
-} @else{
+} @else {
   <div class="flex flex-col gap-1">
     <h1>{{ DEV_SETTINGS_RU.HEADER }}<sub>{{ id }}</sub></h1>
     <app-block-head>
-      {{DEV_SETTINGS_RU.SETTINGS}}
+      {{ DEV_SETTINGS_RU.SETTINGS }}
+    </app-block-head>
+    <app-body>
+      <form class="flex flex-col gap-4" [formGroup]="formGroup">
+        <div class="standard-container bigger-container">
+          <span>{{ MEAS_SETTINGS_RU.MEAS_DATE }}:</span>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="date"
+              >
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="standard-container bigger-container">
+          <span>{{ MEAS_SETTINGS_RU.MEAS_TIME }}:</span>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                [matTimepicker]="timepicker"
+                formControlName="time"
+              >
+              <mat-timepicker-toggle matIconSuffix [for]="timepicker"/>
+              <mat-timepicker #timepicker/>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="standard-container bigger-container">
+          <span>{{ MEAS_SETTINGS_RU.MEAS_INTERVAL }}:</span>
+          <input type="number" name="interval" formControlName="interval" class="standard-input">
+        </div>
+        <div class="standard-container bigger-container">
+          <span>{{ MEAS_SETTINGS_RU.MEAS_INTERVAL_TIME }}:</span>
+          <input type="number" name="intervalTime" formControlName="interval" class="standard-input">
+        </div>
+        <div class="standard-container bigger-container">
+          <span>{{ MEAS_SETTINGS_RU.MEAS_MODE }}:</span>
+          <input type="number" name="mode" formControlName="interval" class="standard-input">
+        </div>
+        <div class="standard-container bigger-container">
+          <span>{{ MEAS_SETTINGS_RU.MEAS_FILTER }}:</span>
+          <input type="number" name="filter" formControlName="interval" class="standard-input">
+        </div>
+      </form>
+    </app-body>
+
+    <app-block-head>
+      {{ DEV_SETTINGS_RU.COMMENTS }}
     </app-block-head>
     <app-body>
     </app-body>
 
     <app-block-head>
-      {{DEV_SETTINGS_RU.COMMENTS}}
-    </app-block-head>
-    <app-body>
-    </app-body>
-
-    <app-block-head>
-      {{DEV_SETTINGS_RU.MEASURE}}
+      {{ DEV_SETTINGS_RU.MEASURE }}
     </app-block-head>
     <app-body>
     </app-body>

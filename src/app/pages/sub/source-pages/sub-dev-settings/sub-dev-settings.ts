@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-sub-dev-settings',
   imports: [],
   templateUrl: './sub-dev-settings.html',
-  styleUrl: './sub-dev-settings.scss'
+  styleUrl: './sub-dev-settings.scss',
 })
 export class SubDevSettings {
 

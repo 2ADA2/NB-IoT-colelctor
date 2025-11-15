@@ -8,9 +8,9 @@ describe('SubDevSettings', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SubDevSettings]
+      imports: [SubDevSettings],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SubDevSettings);
     component = fixture.componentInstance;
