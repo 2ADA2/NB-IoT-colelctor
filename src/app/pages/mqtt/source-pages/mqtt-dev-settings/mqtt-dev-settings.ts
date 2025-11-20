@@ -2,7 +2,11 @@ import { Component, effect, inject, Injector, OnInit, runInInjectionContext, Vie
 import { BlockHead } from '../../../components/block-head/block-head';
 import { Body } from '../../../components/body/body';
 import { SourceService } from '../../../../services/mqtt/source-service';
-import { DEV_SETTINGS_RU, MEAS_SETTINGS_RU } from '../../../../core/localization/ru/dev-settings-ru';
+import {
+  DEV_SETTINGS_RU, MEAS_SETTINGS_CREDENTIALS_RU,
+  MEAS_SETTINGS_FIR_MODE_RU, MEAS_SETTINGS_MODE_RU,
+  MEAS_SETTINGS_RU,
+} from '../../../../core/localization/ru/dev-settings-ru';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import {
   MatDatepicker,
@@ -20,6 +24,8 @@ import {
   MatTimepickerModule,
   MatTimepickerToggle,
 } from '@angular/material/timepicker';
+import { MatOption, MatSelect } from '@angular/material/select';
+import moment from 'moment';
 
 @Component({
   selector: 'app-mqtt-dev-settings',
@@ -33,7 +39,7 @@ import {
     MatDatepicker,
     MatFormFieldModule, MatInputModule, MatDatepickerModule,
     MatMomentDateModule, ReactiveFormsModule, MatTimepickerInput,
-    MatTimepicker, MatTimepickerToggle, MatTimepickerModule,
+    MatTimepicker, MatTimepickerToggle, MatTimepickerModule, MatOption, MatSelect,
   ],
   encapsulation: ViewEncapsulation.None,
   providers: [
@@ -49,12 +55,18 @@ export class MqttDevSettings implements OnInit {
   public id: string | null = null;
 
   public formGroup: FormGroup = new FormGroup({
-    time: new FormControl(new Date()),
-    date: new FormControl(new Date()),
+    time: new FormControl(moment()),
+    date: new FormControl(moment()),
     interval: new FormControl(0),
     intervalTime: new FormControl(0),
     mode: new FormControl(0),
     filter: new FormControl(0),
+  });
+
+  public formCredentials: FormGroup = new FormGroup({
+    author: new FormControl(""),
+    title: new FormControl(""),
+    comment: new FormControl(""),
   });
 
   public ngOnInit() {
@@ -65,7 +77,27 @@ export class MqttDevSettings implements OnInit {
     });
   }
 
+  public validForm() {
+    const interval = this.formGroup.value.interval || 0;
+    const intervalTime = this.formGroup.value.intervalTime || 0;
+    this.formGroup.patchValue({
+      interval,
+      intervalTime,
+    });
+  }
+
+  public send() {
+    console.log(this.formGroup.value);
+  }
+
+  public reset() {
+    this.formCredentials.reset();
+  }
+
 
   protected readonly DEV_SETTINGS_RU = DEV_SETTINGS_RU;
   protected readonly MEAS_SETTINGS_RU = MEAS_SETTINGS_RU;
+  protected readonly MEAS_SETTINGS_FIR_MODE_RU = MEAS_SETTINGS_FIR_MODE_RU;
+  protected readonly MEAS_SETTINGS_MODE_RU = MEAS_SETTINGS_MODE_RU;
+  protected readonly MEAS_SETTINGS_CREDENTIALS_RU = MEAS_SETTINGS_CREDENTIALS_RU;
 }

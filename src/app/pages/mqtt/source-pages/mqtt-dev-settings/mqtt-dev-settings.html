@@ -14,9 +14,8 @@
       {{ DEV_SETTINGS_RU.SETTINGS }}
     </app-block-head>
     <app-body>
-      <form class="flex flex-col gap-4" [formGroup]="formGroup">
+      <form class="flex flex-col" [formGroup]="formGroup">
         <div class="standard-container bigger-container">
-          <span>{{ MEAS_SETTINGS_RU.MEAS_DATE }}:</span>
           <div>
             <mat-form-field>
               <input
@@ -24,13 +23,11 @@
                 [matDatepicker]="picker"
                 formControlName="date"
               >
+              <mat-label>{{ MEAS_SETTINGS_RU.MEAS_DATE }}</mat-label>
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
           </div>
-        </div>
-        <div class="standard-container bigger-container">
-          <span>{{ MEAS_SETTINGS_RU.MEAS_TIME }}:</span>
           <div>
             <mat-form-field>
               <input
@@ -38,26 +35,47 @@
                 [matTimepicker]="timepicker"
                 formControlName="time"
               >
+              <mat-label>{{ MEAS_SETTINGS_RU.MEAS_TIME }}</mat-label>
               <mat-timepicker-toggle matIconSuffix [for]="timepicker"/>
               <mat-timepicker #timepicker/>
             </mat-form-field>
           </div>
         </div>
         <div class="standard-container bigger-container">
-          <span>{{ MEAS_SETTINGS_RU.MEAS_INTERVAL }}:</span>
-          <input type="number" name="interval" formControlName="interval" class="standard-input">
+          <div>
+            <mat-form-field class="w-[240px]">
+              <mat-label>{{ MEAS_SETTINGS_RU.MEAS_INTERVAL }}</mat-label>
+              <input matInput type="number" name="interval" formControlName="interval" (input)="validForm()">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="w-[240px]">
+              <mat-label>{{ MEAS_SETTINGS_RU.MEAS_INTERVAL_TIME }}</mat-label>
+              <input matInput type="number" name="intervalTime" formControlName="intervalTime" (input)="validForm()">
+            </mat-form-field>
+          </div>
         </div>
         <div class="standard-container bigger-container">
-          <span>{{ MEAS_SETTINGS_RU.MEAS_INTERVAL_TIME }}:</span>
-          <input type="number" name="intervalTime" formControlName="interval" class="standard-input">
-        </div>
-        <div class="standard-container bigger-container">
-          <span>{{ MEAS_SETTINGS_RU.MEAS_MODE }}:</span>
-          <input type="number" name="mode" formControlName="interval" class="standard-input">
-        </div>
-        <div class="standard-container bigger-container">
-          <span>{{ MEAS_SETTINGS_RU.MEAS_FILTER }}:</span>
-          <input type="number" name="filter" formControlName="interval" class="standard-input">
+          <div>
+            <mat-form-field class="w-[240px]">
+              <mat-label>{{ MEAS_SETTINGS_RU.MEAS_MODE }}</mat-label>
+              <mat-select formControlName="filter">
+                @for (mode of MEAS_SETTINGS_MODE_RU; track MEAS_SETTINGS_MODE_RU.indexOf(mode)) {
+                  <mat-option [value]="MEAS_SETTINGS_MODE_RU.indexOf(mode)">{{ mode }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="w-[240px]">
+              <mat-label>{{ MEAS_SETTINGS_RU.MEAS_FILTER }}</mat-label>
+              <mat-select formControlName="filter">
+                @for (fl of MEAS_SETTINGS_FIR_MODE_RU; track MEAS_SETTINGS_FIR_MODE_RU.indexOf(fl)) {
+                  <mat-option [value]="MEAS_SETTINGS_FIR_MODE_RU.indexOf(fl)">{{ fl }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
         </div>
       </form>
     </app-body>
@@ -66,6 +84,34 @@
       {{ DEV_SETTINGS_RU.COMMENTS }}
     </app-block-head>
     <app-body>
+      <form [formGroup]="formCredentials" class="credentials-form">
+        <div>
+          <mat-form-field class="cred-input">
+            <mat-label>{{ MEAS_SETTINGS_CREDENTIALS_RU.AUTHOR }}</mat-label>
+            <input matInput name="author" formControlName="author">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="cred-input">
+            <mat-label>{{ MEAS_SETTINGS_CREDENTIALS_RU.TITLE }}</mat-label>
+            <input matInput name="title" formControlName="title">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class=" cred-input">
+            <mat-label>{{ MEAS_SETTINGS_CREDENTIALS_RU.COMMENT }}</mat-label>
+            <input matInput name="comment" formControlName="comment">
+          </mat-form-field>
+        </div>
+        <div class="standard-container">
+          <div>
+            <button class="standard-button" (click)="send()">{{ MEAS_SETTINGS_RU.SEND }}</button>
+          </div>
+          <div>
+            <button class="standard-button" (click)="reset()">{{ MEAS_SETTINGS_RU.RESET }}</button>
+          </div>
+        </div>
+      </form>
     </app-body>
 
     <app-block-head>

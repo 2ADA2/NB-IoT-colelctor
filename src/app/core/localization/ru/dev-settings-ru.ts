@@ -13,10 +13,20 @@ export const MEAS_SETTINGS_RU = {
   MEAS_INTERVAL_TIME: "Время измерения, сек",
   MEAS_MODE: "Режим измерения",
   MEAS_FILTER: "Режим фильтра",
-
-  REAL_MODE: "",
-  IMIT_MODE: "",
+  RESET: "Сбросить",
+  SEND: "Отправить",
 };
+
+export const MEAS_SETTINGS_CREDENTIALS_RU = {
+  AUTHOR: "Автор",
+  TITLE: "Заголовок",
+  COMMENT: "Комментарий",
+};
+
+export const MEAS_SETTINGS_MODE_RU = [
+  "Реальное измерение",
+  "Режим имитатора",
+];
 
 export const MEAS_SETTINGS_FIR_MODE_RU = [
   "Без децимации",

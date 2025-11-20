@@ -1,3 +1,31 @@
-.standard-input {
-  width: 240px;
+.credentials-form {
+  display: flex;
+  flex-direction: column;
+  padding-left: 110px;
+
+  & .cred-input {
+    width: 100%;
+    max-width: 500px;
+  }
 }
+
+@media (max-width: 1000px) {
+  .credentials-form {
+    padding-left: 60px;
+  }
+}
+
+@media (max-width: 770px) {
+  .credentials-form {
+    padding-left: 0;
+    margin: auto;
+    width: 70%;
+  }
+  .bigger-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0 !important;
+  }
+}
+
+
