@@ -1,9 +1,19 @@
 export const DEV_SETTINGS_RU = {
   HEADER: "Консоль управления",
   SETTINGS: "Настройки измерения",
+  IMIT_SETTINGS: "Настройки имитатора",
   COMMENTS: "Комментарии к измерению",
   MEASURE: "Текущие измерения",
   NOT_FOUND: "Устройство не найдено",
+};
+
+export const IMIT_SETTINGS_RU = {
+  signA: "Сигнал А",
+  signB: "Сигнал В",
+  signC: "Сигнал С",
+  amplitude: "Амплитуда",
+  frequency: "Частота",
+  phase: "Фаза",
 };
 
 export const MEAS_SETTINGS_RU = {

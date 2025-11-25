@@ -1,0 +1,90 @@
+<table class="dev-settings-table" [formGroup]="imitGroup">
+  <thead>
+  <tr>
+    <th class="empty"></th>
+    <th class="signal-A">Amplitude</th>
+    <th class="signal-B">Frequency</th>
+    <th class="signal-B">Phase</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="signal-A">
+      <div class="ds-input-container">{{ IMIT_SETTINGS_RU.signA }}</div>
+    </td>
+    <td>
+      <div class="ds-input-container">
+        <mat-form-field class="ds-input">
+          <input matInput type="number" name="ampA" formControlName="ampA" (input)="validTable()" min="0">
+        </mat-form-field>
+      </div>
+    </td>
+    <td>
+      <div class="ds-input-container">
+        <mat-form-field class="ds-input">
+          <input matInput type="number" name="freqA" formControlName="freqA" (input)="validTable()" min="0">
+        </mat-form-field>
+      </div>
+    </td>
+    <td>
+      <div class="ds-input-container">
+        <mat-form-field class="ds-input">
+          <input matInput type="number" name="phaseA" formControlName="phaseA" (input)="validTable()" min="0">
+        </mat-form-field>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="signal-A">
+      <div class="ds-input-container">{{ IMIT_SETTINGS_RU.signB }}</div>
+    </td>
+    <td>
+      <div class="ds-input-container">
+        <mat-form-field class="ds-input">
+          <input matInput type="number" name="ampB" formControlName="ampB" (input)="validTable()" min="0">
+        </mat-form-field>
+      </div>
+    </td>
+    <td>
+      <div class="ds-input-container">
+        <mat-form-field class="ds-input">
+          <input matInput type="number" name="freqB" formControlName="freqB" (input)="validTable()" min="0">
+        </mat-form-field>
+      </div>
+    </td>
+    <td>
+      <div class="ds-input-container">
+        <mat-form-field class="ds-input">
+          <input matInput type="number" name="phaseB" formControlName="phaseB" (input)="validTable()" min="0">
+        </mat-form-field>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="signal-A">
+      <div class="ds-input-container">{{ IMIT_SETTINGS_RU.signC }}</div>
+    </td>
+    <td>
+      <div class="ds-input-container">
+        <mat-form-field class="ds-input">
+          <input matInput type="number" name="ampC" formControlName="ampC" (input)="validTable()" min="0">
+        </mat-form-field>
+      </div>
+    </td>
+    <td>
+      <div class="ds-input-container">
+        <mat-form-field class="ds-input">
+          <input matInput type="number" name="freqC" formControlName="freqC" (input)="validTable()" min="0">
+        </mat-form-field>
+      </div>
+    </td>
+    <td>
+      <div class="ds-input-container">
+        <mat-form-field class="ds-input">
+          <input matInput type="number" name="phaseC" formControlName="phaseC" (input)="validTable()" min="0">
+        </mat-form-field>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
