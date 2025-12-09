@@ -14,6 +14,7 @@ export const IMIT_SETTINGS_RU = {
   amplitude: "Амплитуда",
   frequency: "Частота",
   phase: "Фаза",
+  noise: "Шум",
 };
 
 export const MEAS_SETTINGS_RU = {

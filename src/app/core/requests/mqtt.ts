@@ -13,3 +13,6 @@ export const STATUS_SET: string = MQTT + "/set%20state";
 
 export const DB_GET: string = MQTT + "/DBState/";
 export const DB_SET: string = MQTT + "/DB/";
+
+export const MEASURE_POST: string = MQTT + "/measure/";
+

@@ -2,9 +2,9 @@
   <thead>
   <tr>
     <th class="empty"></th>
-    <th class="signal-A">Amplitude</th>
-    <th class="signal-B">Frequency</th>
-    <th class="signal-B">Phase</th>
+    <th class="signal-A">{{ IMIT_SETTINGS_RU.amplitude }}</th>
+    <th class="signal-B">{{ IMIT_SETTINGS_RU.frequency }}</th>
+    <th class="signal-B">{{ IMIT_SETTINGS_RU.phase }}</th>
   </tr>
   </thead>
   <tbody>
@@ -86,5 +86,18 @@
       </div>
     </td>
   </tr>
+  <tr>
+    <td>
+      <div class="ds-input-container">{{ IMIT_SETTINGS_RU.noise }}</div>
+    </td>
+    <td>
+      <div class="ds-input-container">
+        <mat-form-field class="ds-input">
+          <input matInput type="number" name="noise" formControlName="noise" (input)="validTable()" min="0">
+        </mat-form-field>
+      </div>
+    </td>
+  </tr>
   </tbody>
 </table>
+
