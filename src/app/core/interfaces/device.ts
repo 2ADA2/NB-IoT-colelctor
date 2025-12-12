@@ -27,3 +27,37 @@ export interface ImitDataInterface {
   phaseC: number
   noise: number
 }
+
+export interface MeasInfoInterface {
+  "MeasComment": {
+    "Artist": string
+    "Comment": string
+    "Titel": string
+  },
+  "MeasSchedule": {
+    "FIRmode": number
+    "MeasType": string
+    "Nois"?: number
+    "Sig1"?: number[]
+    "Sig2"?: number[]
+    "Sig3"?: number[]
+    "Tmeas": number
+    "Trepeat": number
+    "Tstart": string
+  }
+}
+
+export interface MeasTargetInterface {
+  MeasInf: MeasInfoInterface[]
+  MeasList: string[]
+  MeasState: string[]
+}
+
+export interface MeasFulfilledInterface {
+  MeasInf: MeasInfoInterface[],
+  MeasError: string[]
+  MeasList: string[]
+  MeasState: string[]
+  ShedulState: string[]
+}
+

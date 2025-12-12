@@ -15,4 +15,5 @@ export const DB_GET: string = MQTT + "/DBState/";
 export const DB_SET: string = MQTT + "/DB/";
 
 export const MEASURE_POST: string = MQTT + "/measure/";
+export const MEASURE_GET: string = MQTT + "/list%20measure/";
 

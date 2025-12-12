@@ -1,8 +1,14 @@
 import { inject, Injectable } from '@angular/core';
-import { DevCredentialsInterface, DevFormInterface, ImitDataInterface } from '../core/interfaces/device';
+import {
+  DevCredentialsInterface,
+  DevFormInterface,
+  ImitDataInterface, MeasFulfilledInterface, MeasInfoInterface,
+  MeasTargetInterface,
+} from '../core/interfaces/device';
 import { HttpClient } from '@angular/common/http';
 import { SourceService } from './mqtt/source-service';
-import { MEASURE_POST } from '../core/requests/mqtt';
+import { MEASURE_GET, MEASURE_POST } from '../core/requests/mqtt';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -89,6 +95,22 @@ export class DeviceService {
       });
     }
     return;
+  }
+
+  private updateMeasure(type: "target"): Observable<MeasTargetInterface>;
+  private updateMeasure(type: "fulfilled"): Observable<MeasFulfilledInterface>;
+  private updateMeasure(type: string) {
+    return this.http.post<MeasTargetInterface|MeasFulfilledInterface>(MEASURE_GET + this.sourceService.getId(), {
+      MeasList: type,
+    });
+  }
+
+  public updateTarget(): Observable<MeasTargetInterface> {
+    return this.updateMeasure("target");
+  }
+
+  public updateFulfilled(): Observable<MeasFulfilledInterface> {
+    return this.updateMeasure("fulfilled");
   }
 }
 

@@ -11,6 +11,15 @@
   <div class="flex flex-col gap-1">
     <h1>{{ DEV_SETTINGS_RU.HEADER }}<sub>{{ id }}</sub></h1>
     <app-block-head>
+      {{ DEV_SETTINGS_RU.MEASURE }}
+    </app-block-head>
+    <app-body>
+      <section class="meas-section">
+        <div class="meas-container"></div>
+        <div class="meas-container"></div>
+      </section>
+    </app-body>
+    <app-block-head>
       {{ DEV_SETTINGS_RU.SETTINGS }}
     </app-block-head>
     <app-body>
@@ -135,12 +144,6 @@
           </div>
         </div>
       </form>
-    </app-body>
-
-    <app-block-head>
-      {{ DEV_SETTINGS_RU.MEASURE }}
-    </app-block-head>
-    <app-body>
     </app-body>
   </div>
 }

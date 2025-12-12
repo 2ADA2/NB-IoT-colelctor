@@ -1,3 +1,14 @@
+.meas-section{
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  grid-gap: 4px;
+
+  & .meas-container{
+    height: 300px;
+    background: var(--back-white-color);
+    border-radius: 4px;
+  }
+}
 .credentials-form {
   display: flex;
   flex-direction: column;

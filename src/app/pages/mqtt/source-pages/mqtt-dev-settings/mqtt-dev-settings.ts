@@ -28,6 +28,7 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import moment from 'moment';
 import { Table } from './components/table/table';
 import { DeviceService } from '../../../../services/device-service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-mqtt-dev-settings',
@@ -57,6 +58,9 @@ export class MqttDevSettings implements OnInit {
 
   public id: string | null = null;
 
+  public measTarget = null;
+  public measFulfilled = null;
+
   public formGroup: FormGroup = new FormGroup({
     time: new FormControl(moment()),
     date: new FormControl(moment()),
@@ -78,6 +82,16 @@ export class MqttDevSettings implements OnInit {
         this.id = this.sourceService.getId();
       });
     });
+
+    this.deviceService.updateTarget()
+      .pipe(tap((res) => {
+        console.log(res);
+      })).subscribe();
+
+    this.deviceService.updateFulfilled()
+      .pipe(tap((res) => {
+        console.log(res);
+      })).subscribe();
   }
 
   public validForm() {
@@ -97,14 +111,12 @@ export class MqttDevSettings implements OnInit {
     if (res) {
       res.subscribe();
     }
-
     return;
   }
 
   public reset() {
     this.formCredentials.reset();
   }
-
 
   protected readonly DEV_SETTINGS_RU = DEV_SETTINGS_RU;
   protected readonly MEAS_SETTINGS_RU = MEAS_SETTINGS_RU;
