@@ -15,8 +15,32 @@
     </app-block-head>
     <app-body>
       <section class="meas-section">
-        <div class="meas-container"></div>
-        <div class="meas-container"></div>
+        <div class="meas-container">
+          @if (measTarget) {
+            @for (i of measTargetId; track i) {
+              <app-card-component
+                [type]="1"
+                [time]="measTarget.MeasList[i]"
+                [measInfo]="measTarget.MeasInf[i]"
+                [measState]="measTarget.MeasState[i]"
+              ></app-card-component>
+            }
+          }
+        </div>
+        <div class="meas-container">
+          @if (measFulfilled) {
+            @for (i of measFulfilledId; track i) {
+              <app-card-component
+                [type]="2"
+                [time]="measFulfilled.MeasList[i]"
+                [measInfo]="measFulfilled.MeasInf[i]"
+                [measState]="measFulfilled.MeasState[i]"
+                [measError]="measFulfilled.MeasError[i]"
+                [scheduleState]="measFulfilled.SchedulState[i]"
+              ></app-card-component>
+            }
+          }
+        </div>
       </section>
     </app-body>
     <app-block-head>

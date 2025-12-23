@@ -1,0 +1,18 @@
+<div class="card-component">
+  <div class="card-main">
+    <span>{{measInfo().MeasComment.Artist}}</span>
+    <span>{{measInfo().MeasSchedule.Tstart}}</span>
+    <div class="card-info-box">{{(type() === 1) ? "принято планировщиком" : "пакет принят успешно"}}<span></span></div>
+    <div class="card-info-box">{{measState()}} <span></span></div>
+    @if(scheduleState()){
+      <div class="card-info-box">{{scheduleState()}} <span></span></div>
+    }
+    @if(measError()){
+      <div class="card-info-box">{{measError()}}<span></span></div>
+    }
+  </div>
+  <div class="card-info">
+    <span>{{measInfo().MeasComment.Titel}}</span>
+    <p>{{measInfo().MeasComment.Comment}}</p>
+  </div>
+</div>

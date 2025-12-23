@@ -29,6 +29,8 @@ import moment from 'moment';
 import { Table } from './components/table/table';
 import { DeviceService } from '../../../../services/device-service';
 import { tap } from 'rxjs/operators';
+import { MeasFulfilledInterface, MeasTargetInterface } from '../../../../core/interfaces/device';
+import { CardComponent } from './components/card-component/card-component';
 
 @Component({
   selector: 'app-mqtt-dev-settings',
@@ -42,7 +44,7 @@ import { tap } from 'rxjs/operators';
     MatDatepicker,
     MatFormFieldModule, MatInputModule, MatDatepickerModule,
     MatMomentDateModule, ReactiveFormsModule, MatTimepickerInput,
-    MatTimepicker, MatTimepickerToggle, MatTimepickerModule, MatOption, MatSelect, Table,
+    MatTimepicker, MatTimepickerToggle, MatTimepickerModule, MatOption, MatSelect, Table, CardComponent,
   ],
   encapsulation: ViewEncapsulation.None,
   providers: [
@@ -58,8 +60,10 @@ export class MqttDevSettings implements OnInit {
 
   public id: string | null = null;
 
-  public measTarget = null;
-  public measFulfilled = null;
+  public measTarget: null | MeasTargetInterface = null;
+  public measTargetId: number[] = [];
+  public measFulfilled: null | MeasFulfilledInterface = null;
+  public measFulfilledId: number[] = [];
 
   public formGroup: FormGroup = new FormGroup({
     time: new FormControl(moment()),
@@ -85,12 +89,22 @@ export class MqttDevSettings implements OnInit {
 
     this.deviceService.updateTarget()
       .pipe(tap((res) => {
-        console.log(res);
+        this.measTarget = res;
+        let i = -1;
+        this.measTargetId = res.MeasList.map(() => {
+          i++;
+          return i;
+        });
       })).subscribe();
 
     this.deviceService.updateFulfilled()
       .pipe(tap((res) => {
-        console.log(res);
+        this.measFulfilled = res;
+        let i = -1;
+        this.measFulfilledId = res.MeasList.map(() => {
+          i++;
+          return i;
+        });
       })).subscribe();
   }
 
@@ -123,4 +137,5 @@ export class MqttDevSettings implements OnInit {
   protected readonly MEAS_SETTINGS_FIR_MODE_RU = MEAS_SETTINGS_FIR_MODE_RU;
   protected readonly MEAS_SETTINGS_MODE_RU = MEAS_SETTINGS_MODE_RU;
   protected readonly MEAS_SETTINGS_CREDENTIALS_RU = MEAS_SETTINGS_CREDENTIALS_RU;
+  protected readonly length = length;
 }

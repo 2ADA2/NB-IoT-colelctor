@@ -58,6 +58,9 @@ export interface MeasFulfilledInterface {
   MeasError: string[]
   MeasList: string[]
   MeasState: string[]
-  ShedulState: string[]
+  SchedulState: string[]
 }
 
+export interface MeasResponseInterface {
+  "meas add status": number
+}
