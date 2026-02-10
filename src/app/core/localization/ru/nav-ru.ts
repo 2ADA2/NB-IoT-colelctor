@@ -4,3 +4,9 @@ export const NAV_RU = {
   SETTINGS: "Настройки",
   ADV_SETTINGS: "Расширенные",
 };
+
+export const NAV_DEV_RU = {
+  INFO: "Информация",
+  SETTINGS: "Настройки",
+  CMD: "Команды",
+};

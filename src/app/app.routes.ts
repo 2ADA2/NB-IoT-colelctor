@@ -1,9 +1,18 @@
 import { Routes } from '@angular/router';
-import { ADVANCED_ROUTE, AUTH_ROUTE, HOME_ROUTE, SETTINGS_ROUTE, SOURCES_ROUTE } from './core/consts/routes';
+import {
+  ADVANCED_ROUTE,
+  AUTH_ROUTE,
+  D_CMD_ROUTE,
+  D_INFO_ROUTE,
+  D_SETTINGS_ROUTE,
+  HOME_ROUTE,
+  SETTINGS_ROUTE,
+  SOURCES_ROUTE,
+} from './core/consts/routes';
 import { Home } from './pages/common/home/home';
 import { authGuard } from './core/guards/auth-guard';
 import { authRouteGuard } from './core/guards/auth-route-guard';
-import { Sources } from './pages/deviders/sources/sources';
+import { Sources } from './pages/dividers/sources/sources';
 
 export const routes: Routes = [
   {
@@ -36,9 +45,22 @@ export const routes: Routes = [
           {
             path: SOURCES_ROUTE,
             component: Sources,
-            children: [],
           },
-          { path: "**", redirectTo: AUTH_ROUTE },
+
+          {
+            path: SOURCES_ROUTE + "/" + D_INFO_ROUTE + "/:id",
+            loadComponent: () => import("./pages/dividers/source-pages/dev-info/dev-info").then(m => m.DevInfo),
+          },
+          {
+            path: SOURCES_ROUTE + "/" + D_SETTINGS_ROUTE + "/:id",
+            loadComponent: () => import("./pages/dividers/source-pages/dev-settings/dev-settings").then(m => m.DevSettings),
+          },
+          {
+            path: SOURCES_ROUTE + "/" + D_CMD_ROUTE + "/:id",
+            loadComponent: () => import("./pages/dividers/source-pages/dev-cmd/dev-cmd").then(m => m.DevCmd),
+          },
+
+          { path: "**", redirectTo: HOME_ROUTE },
         ],
         canActivate: [authGuard],
       },

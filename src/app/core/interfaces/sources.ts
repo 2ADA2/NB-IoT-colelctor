@@ -34,9 +34,12 @@ export interface FormattedSourcesInterface {
 
 export interface ConnectionStateInterface {
   "ConnectionState": boolean;
-
 }
 
-export interface DevInfoListIntreface {
-  DevinfoList: DeviceInfoInterface[]
+export interface DevInfoListInterface {
+  DevinfoList: DeviceInfoInterface[];
+}
+
+export interface DBStateInterface {
+  "PutDBState": boolean;
 }

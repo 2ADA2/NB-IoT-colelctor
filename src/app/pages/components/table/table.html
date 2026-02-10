@@ -14,7 +14,7 @@
         <tr
           [class.online]="device.online"
           [class.offline]="!device.online"
-          routerLink = "{{SOURCES_ROUTE}}\{{device.id}}"
+          [routerLink]="['/', SOURCES_ROUTE, D_INFO_ROUTE, device.id]"
         >
           <td class="id">
             {{ device.id }}
@@ -33,24 +33,24 @@
           </td>
         </tr>
       }
-    } @else{
-        <tr>
-          <td class="id">
-            -
-          </td>
-          <td class="time">
-            -
-          </td>
-          <td class="signal">
-            -
-          </td>
-          <td class="battery">
-            -
-          </td>
-          <td class="temperature">
-            -
-          </td>
-        </tr>
+    } @else {
+      <tr>
+        <td class="id">
+          -
+        </td>
+        <td class="time">
+          -
+        </td>
+        <td class="signal">
+          -
+        </td>
+        <td class="battery">
+          -
+        </td>
+        <td class="temperature">
+          -
+        </td>
+      </tr>
     }
   </tbody>
 </table>

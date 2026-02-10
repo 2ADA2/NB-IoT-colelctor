@@ -7,7 +7,7 @@ import { TokenInterface } from '../../../core/interfaces/auth';
 import { Router } from '@angular/router';
 import { HOME_ROUTE } from '../../../core/consts/routes';
 import { MessageService } from '../../../services/common/message-service';
-import { AUTH_RU } from '../../../core/localization/ru/auth-ru';
+import { AUTH_RU, AUTH_RU_ERRORS } from '../../../core/localization/ru/auth-ru';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -39,9 +39,9 @@ export class Auth {
       const password = this.form.get('password');
 
       if (username?.hasError('required')) {
-        this.messageService.createError(AUTH_RU.ERROR, AUTH_RU.USERNAME_ERROR);
+        this.messageService.createError(AUTH_RU_ERRORS.ERROR, AUTH_RU_ERRORS.USERNAME_ERROR);
       } else if (password?.hasError('required')) {
-        this.messageService.createError(AUTH_RU.ERROR, AUTH_RU.PASSWORD_ERROR);
+        this.messageService.createError(AUTH_RU_ERRORS.ERROR, AUTH_RU_ERRORS.PASSWORD_ERROR);
       }
 
       return;
@@ -53,10 +53,11 @@ export class Auth {
         this.routerService.navigateByUrl(HOME_ROUTE);
       }),
       catchError(() => {
-        this.messageService.createError(AUTH_RU.ERROR, AUTH_RU.AUTH_ERROR);
+        this.messageService.createError(AUTH_RU_ERRORS.ERROR, AUTH_RU_ERRORS.AUTH_ERROR);
         return of(null);
       }),
     ).subscribe();
   }
 
+  protected readonly AUTH_RU = AUTH_RU;
 }

@@ -22,7 +22,53 @@
       <span>{{ NAV_RU.SOURCES }}</span>
     </a>
   </button>
-  <button class="nav-btn" [class.activated]="checkActivated(SETTINGS)">
+  @if (id) {
+    <nav class="source-nav">
+      <button class="source-nav-btn" [class.activated]="checkActivated(D_INFO_ROUTE)">
+        <a
+          class="btn-link"
+          [routerLink]="['/',  SOURCES_ROUTE, D_INFO_ROUTE, id]"
+        >
+          <mat-icon
+            class="source-nav-icon"
+            aria-hidden="false"
+            aria-label="Settings icon"
+            fontIcon="info"
+          ></mat-icon>
+          <span>{{ NAV_DEV_RU.INFO }}</span>
+        </a>
+      </button>
+      <button class="source-nav-btn" [class.activated]="checkActivated(D_SETTINGS_ROUTE)">
+        <a
+          class="btn-link" routerLink="{{SOURCES}}"
+          [routerLink]="['/',  SOURCES_ROUTE, D_SETTINGS_ROUTE, id]"
+        >
+          <mat-icon
+            class="source-nav-icon"
+            aria-hidden="false"
+            aria-label="Settings icon"
+            fontIcon="display_settings"
+          ></mat-icon>
+          <span>{{ NAV_DEV_RU.SETTINGS }}</span>
+        </a>
+      </button>
+      <button class="source-nav-btn" [class.activated]="checkActivated(D_CMD_ROUTE)">
+        <a
+          class="btn-link"
+          [routerLink]="['/',  SOURCES_ROUTE, D_CMD_ROUTE, id]"
+        >
+          <mat-icon
+            class="source-nav-icon"
+            aria-hidden="false"
+            aria-label="Settings icon"
+            fontIcon="schedule_send"
+          ></mat-icon>
+          <span>{{ NAV_DEV_RU.CMD }}</span>
+        </a>
+      </button>
+    </nav>
+  }
+  <button class="nav-btn" [class.activated]="checkActivated(SETTINGS, true)">
     <a class="btn-link" routerLink="{{SETTINGS}}">
       <mat-icon
         aria-hidden="false"

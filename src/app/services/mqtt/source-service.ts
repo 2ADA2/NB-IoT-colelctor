@@ -1,12 +1,12 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import {
-  ConnectionStateInterface,
+  ConnectionStateInterface, DBStateInterface,
   DeviceInfoInterface,
-  DevInfoListIntreface,
+  DevInfoListInterface,
   FormattedSourcesInterface,
 } from '../../core/interfaces/sources';
 import { HttpClient } from '@angular/common/http';
-import { SOURCES_GET, STATUS_GET, STATUS_SET } from '../../core/requests/mqtt';
+import { DB_GET, DB_SET, SOURCES_GET, STATUS_GET, STATUS_SET } from '../../core/requests/mqtt';
 import { tap } from 'rxjs/operators';
 import { MessageService } from '../common/message-service';
 import { SOURCES_ERRORS_RU } from '../../core/localization/ru/sources-ru';
@@ -18,6 +18,7 @@ export class SourceService {
   private http = inject(HttpClient);
   private messageService = inject(MessageService);
 
+  // connection state block
   public connectionState: WritableSignal<0 | 1 | 2> = signal(2); // 2 - loading  1 - connected  0 - no
 
   public setState() {
@@ -44,13 +45,13 @@ export class SourceService {
     }));
   }
 
-
+  // sources block
   public sources: DeviceInfoInterface[] = [];
   public formattedSources: WritableSignal<FormattedSourcesInterface[]> = signal([]);
 
   public updateSources() {
-    return this.http.get<DevInfoListIntreface>(SOURCES_GET,
-    ).pipe(tap((res: DevInfoListIntreface) => {
+    return this.http.get<DevInfoListInterface>(SOURCES_GET,
+    ).pipe(tap((res: DevInfoListInterface) => {
       this.sources = res.DevinfoList;
       this.formattedSources.set(this.formatSources(res.DevinfoList));
     }));
@@ -77,4 +78,60 @@ export class SourceService {
 
     return formatted;
   }
+
+  // current device block
+  private id: string | null = null;
+  private dbstate: WritableSignal<boolean> = signal(false);
+
+  public setId(id: string | null) {
+    const oldId = this.id;
+    this.id = id;
+    if (id && id !== oldId) {
+      this.updateDBState(id).pipe(tap((res: DBStateInterface) => {
+        this.dbstate.set(res.PutDBState);
+      })).subscribe();
+    }
+  }
+
+  public getDeviceById(id: string) {
+    return this.sources.find(e => e.Device.DevId === id);
+  }
+
+  public getId() {
+    return this.id;
+  }
+
+  public getDBState() {
+    return this.dbstate();
+  }
+
+  public updateDBState(id: string) {
+    return this.http.get<DBStateInterface>(DB_GET + id);
+  }
+
+  public setDBState(state: boolean) {
+    this.dbstate.set(state);
+  }
+
+  public putInDB(DBNum: number, state = true) {
+    return this.http.post(DB_SET + this.id, {
+      DBSettings: {
+        Dev_numDB: DBNum,
+        State: state,
+      },
+    });
+  }
+
+  // Status but mask parse
+  public getErrors = (bitVector: string) => {
+    const errors = [];
+    const bitMask = parseInt(bitVector, 16);
+
+    for (let i = 0; i < 16; i++) {
+      if (bitMask & (1 << i)) {
+        errors.push(i);
+      }
+    }
+    return errors;
+  };
 }
