@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DevCmd } from './dev-cmd';
+import { RegisterCommand } from './register-command';
 
-describe('DevCmd', () => {
-  let component: DevCmd;
-  let fixture: ComponentFixture<DevCmd>;
+describe('RegisterCommand', () => {
+  let component: RegisterCommand;
+  let fixture: ComponentFixture<RegisterCommand>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DevCmd],
+      imports: [RegisterCommand],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(DevCmd);
+    fixture = TestBed.createComponent(RegisterCommand);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

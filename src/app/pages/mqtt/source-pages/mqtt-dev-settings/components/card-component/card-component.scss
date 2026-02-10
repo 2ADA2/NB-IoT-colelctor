@@ -12,23 +12,24 @@
   padding: 4px;
   font-size: 12px;
 
-  &:hover{
-     bottom: 4px;
-     box-shadow: 0 6px 4px rgba(0, 0, 0, 0.3);
-     border-right: 10px solid var(--main-hover-color);
+  &:hover {
+    bottom: 4px;
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.3);
+    border-right: 10px solid var(--main-hover-color);
   }
 
   & .card-main {
     display: flex;
     flex-direction: column;
 
-    & .card-info-box{
+    & .card-info-box {
       display: flex;
       flex-direction: row-reverse;
-      gap:4px;
+      gap: 4px;
       justify-content: flex-end;
       align-items: center;
-      & ::after{
+
+      & ::after {
         content: '';
         position: relative;
         display: block;

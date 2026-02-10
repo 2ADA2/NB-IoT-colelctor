@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import {
   DevCredentialsInterface,
   DevFormInterface,
-  ImitDataInterface, MeasFulfilledInterface, MeasInfoInterface, MeasResponseInterface,
+  ImitDataInterface, MeasFulfilledInterface, MeasResponseInterface,
   MeasTargetInterface,
 } from '../core/interfaces/device';
 import { HttpClient } from '@angular/common/http';
@@ -113,9 +113,11 @@ export class DeviceService {
   private sendMessage() {
     this.messageService.newMessage("Отправлено", "Запрос на измерение отправлен", "standard");
   }
+
   private successMessage() {
     this.messageService.newMessage("Принято", "Запрос на измерение принят", "success");
   }
+
   private errorMessage() {
     this.messageService.createError("Отклонено", "Запрос на измерение отклонен");
   }
@@ -123,7 +125,7 @@ export class DeviceService {
   private updateMeasure(type: "target"): Observable<MeasTargetInterface>;
   private updateMeasure(type: "fulfilled"): Observable<MeasFulfilledInterface>;
   private updateMeasure(type: string) {
-    return this.http.post<MeasTargetInterface|MeasFulfilledInterface>(MEASURE_GET + this.sourceService.getId(), {
+    return this.http.post<MeasTargetInterface | MeasFulfilledInterface>(MEASURE_GET + this.sourceService.getId(), {
       MeasList: type,
     });
   }

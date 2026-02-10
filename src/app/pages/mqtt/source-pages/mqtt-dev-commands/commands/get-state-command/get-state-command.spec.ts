@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubSources } from './sub-sources';
+import { GetStateCommand } from './get-state-command';
 
-describe('SubSources', () => {
-  let component: SubSources;
-  let fixture: ComponentFixture<SubSources>;
+describe('GetStateCommand', () => {
+  let component: GetStateCommand;
+  let fixture: ComponentFixture<GetStateCommand>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SubSources],
+      imports: [GetStateCommand],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(SubSources);
+    fixture = TestBed.createComponent(GetStateCommand);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
