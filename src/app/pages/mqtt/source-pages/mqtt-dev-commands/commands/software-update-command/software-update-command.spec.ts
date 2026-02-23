@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterCommand } from './register-command';
+import { SoftwareUpdateCommand } from './software-update-command';
 
-describe('RegisterCommand', () => {
-  let component: RegisterCommand;
-  let fixture: ComponentFixture<RegisterCommand>;
+describe('SoftwareUpdateCommand', () => {
+  let component: SoftwareUpdateCommand;
+  let fixture: ComponentFixture<SoftwareUpdateCommand>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegisterCommand],
+      imports: [SoftwareUpdateCommand],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(RegisterCommand);
+    fixture = TestBed.createComponent(SoftwareUpdateCommand);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

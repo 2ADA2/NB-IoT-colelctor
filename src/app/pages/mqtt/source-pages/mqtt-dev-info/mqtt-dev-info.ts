@@ -83,7 +83,7 @@ export class MqttDevInfo implements OnInit {
 
   public putInDB(state = true) {
     if (this.DBNum.value !== null) {
-      this.messageService.newMessage("DB State", "request has been sanded", "standard");
+      this.messageService.newMessage("DB State", "request has been sent", "standard");
       this.sourceService.putInDB(this.DBNum.value, state)
         .pipe(tap((res: unknown) => {
           if (typeof (res) === "object" && res) {

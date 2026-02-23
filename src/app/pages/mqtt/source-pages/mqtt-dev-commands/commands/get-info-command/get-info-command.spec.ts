@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GetStateCommand } from './get-state-command';
+import { GetInfoCommand } from './get-info-command';
 
-describe('GetStateCommand', () => {
-  let component: GetStateCommand;
-  let fixture: ComponentFixture<GetStateCommand>;
+describe('GetInfoCommand', () => {
+  let component: GetInfoCommand;
+  let fixture: ComponentFixture<GetInfoCommand>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GetStateCommand],
+      imports: [GetInfoCommand],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(GetStateCommand);
+    fixture = TestBed.createComponent(GetInfoCommand);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

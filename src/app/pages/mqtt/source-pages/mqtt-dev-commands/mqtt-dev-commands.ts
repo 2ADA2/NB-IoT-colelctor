@@ -1,15 +1,13 @@
 import { Component, effect, inject, Injector, runInInjectionContext, OnInit } from '@angular/core';
-import { DEV_SETTINGS_RU } from "../../../../core/localization/ru/dev-settings-ru";
 import { BlockHead } from "../../../components/block-head/block-head";
 import { Body } from "../../../components/body/body";
 import { SourceService } from '../../../../services/mqtt/source-service';
-import { DEV_COMMANDS_RU } from '../../../../core/localization/ru/dev-commands-ru';
-import { RegisterCommand } from './commands/register-command/register-command';
-import { GetStateCommand } from './commands/get-state-command/get-state-command';
+import { DEV_COMMAND_NAMES_RU, DEV_COMMANDS_RU } from '../../../../core/localization/ru/dev-commands-ru';
 import { NgComponentOutlet } from '@angular/common';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatOption, MatSelect } from '@angular/material/select';
+import { mqttCommandComponents, mqttCommandNames } from '../../../../core/consts/mqtt-commands';
 
 @Component({
   selector: 'app-mqtt-dev-commands',
@@ -32,8 +30,12 @@ export class MqttDevCommands implements OnInit {
   private sourceService = inject(SourceService);
 
   public id: string | null = null;
-  public commands = [RegisterCommand, GetStateCommand];
-  public commandSelect = new FormControl(0);
+  public commands = mqttCommandComponents;
+  public commandsNames = mqttCommandNames;
+  public commandSelect = new FormControl<number>(0);
+
+  public commandSent: string | null = null;
+  public commandStatus: string | null = null;
 
   ngOnInit() {
     runInInjectionContext(this.injector, () => {
@@ -43,6 +45,8 @@ export class MqttDevCommands implements OnInit {
     });
   }
 
-  protected readonly DEV_SETTINGS_RU = DEV_SETTINGS_RU;
   protected readonly DEV_COMMANDS_RU = DEV_COMMANDS_RU;
+  protected readonly Object = Object;
+  protected readonly DEV_COMMAND_NAMES_RU = DEV_COMMAND_NAMES_RU;
+  protected readonly String = String;
 }
