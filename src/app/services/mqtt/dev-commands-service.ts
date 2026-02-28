@@ -19,13 +19,14 @@ export class DevCommandsService {
     };
   }
 
-  public sendCommand(command: string): null | 1 {
+  public sendCommand(command: string, body:object): null | 1 {
     if (this.inProgress) {
       return null;
     }
     this.inProgress = true;
     this.currentCommand = command;
     this.currentStatus = "pending";
+    console.log(body);
     return 1;
   };
 

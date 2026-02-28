@@ -1,6 +1,7 @@
 export const DEV_COMMANDS_RU = {
   HEADER: "Консоль управления",
   COMMANDS: "Команды устройству",
+  SEND:"Отправить",
 };
 
 export const DEV_COMMAND_NAMES_RU = {

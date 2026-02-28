@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DevCommandsService } from '../../../../../../services/mqtt/dev-commands-service';
 
 @Component({
   selector: 'app-get-info-command',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './get-info-command.scss',
 })
 export class GetInfoCommand {
+  private devCommandsService = inject(DevCommandsService);
 
+  public getInfo() {
+    this.devCommandsService.sendCommand("GET_INFO", {
+        "USER_CMD": "GET_EXT_INFO",
+      },
+    );
+  }
 }
