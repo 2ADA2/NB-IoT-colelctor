@@ -1,0 +1,13 @@
+<div class="response-field">
+  @if (!entries.length) {
+    <div class="danger">No info</div>
+  } @else {
+    <h5 class="font-medium">Response:</h5>
+  }
+  @for (e of entries; track $index) {
+    <div class="standard-container">
+      <span>{{ e[0] }}:</span>
+      <span>{{ e[1] }}</span>
+    </div>
+  }
+</div>

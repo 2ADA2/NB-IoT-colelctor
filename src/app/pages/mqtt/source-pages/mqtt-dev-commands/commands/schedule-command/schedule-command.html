@@ -1,1 +1,21 @@
-<p>schedule-command works!</p>
+<form [formGroup]="formGroup" class="flex flex-col gap-1 commands-form">
+  <mat-form-field>
+    <mat-label>
+      Trepeat
+    </mat-label>
+    <input matInput name="Trepeat" formControlName="Trepeat">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>
+      NetDelay
+    </mat-label>
+    <input matInput name="NetDelay" formControlName="NetDelay">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>
+      TimeZone
+    </mat-label>
+    <input matInput name="TimeZone" formControlName="TimeZone">
+  </mat-form-field>
+  <button class="standard-button">{{ DEV_COMMANDS_RU.SEND }}</button>
+</form>

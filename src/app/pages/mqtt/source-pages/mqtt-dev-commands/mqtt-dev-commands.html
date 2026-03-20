@@ -4,11 +4,19 @@
     {{ DEV_COMMANDS_RU.COMMANDS }}
   </app-block-head>
   <app-body>
-    <div>Текущий статус</div>
+    <div>Текущий статус {{ lastID() }}</div>
     <div class="flex gap-4">
-      <div>{{ commandSent || "no command" }}:</div>
-      <div>{{ commandStatus || "no status" }}</div>
+      <div>{{ DEV_COMMAND_NAMES_RU[command()] }}:</div>
+      <div>
+        @if (inProgress()) {
+          {{ commandStatus() || "no status" }}
+          <app-loading-component></app-loading-component>
+        } @else {
+          {{ commandStatus() || "no status" }}
+        }
+      </div>
     </div>
+    <app-resp-field></app-resp-field>
   </app-body>
   <app-body class="h-full">
     <mat-form-field class="w-[400px]">
@@ -20,5 +28,9 @@
       </mat-select>
     </mat-form-field>
     <ng-container *ngComponentOutlet="commands[commandSelect.value || 0]"></ng-container>
+    @if (inProgress()) {
+      <button class="standard-button" (click)="stopCommand()">{{ DEV_COMMANDS_RU.CANCEL }}</button>
+    }
   </app-body>
+
 </div>

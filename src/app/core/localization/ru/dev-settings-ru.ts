@@ -3,7 +3,8 @@ export const DEV_SETTINGS_RU = {
   SETTINGS: "Настройки измерения",
   IMIT_SETTINGS: "Настройки имитатора",
   COMMENTS: "Комментарии к измерению",
-  MEASURE: "Текущие измерения",
+  CUR_MEASURE: "Текущие измерения",
+  FUL_MEASURE: "Завершенные измерения",
   NOT_FOUND: "Устройство не найдено",
 };
 

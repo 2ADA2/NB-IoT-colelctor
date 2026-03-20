@@ -14,6 +14,9 @@ export class RegistrationCommand {
   public register() {
     this.devCommandsService.sendCommand("REGISTRATION", {
         "USER_CMD": "REGISTRATION",
+        "USER_ARG": {
+          "REG_ID": 123456,
+        },
       },
     );
   }

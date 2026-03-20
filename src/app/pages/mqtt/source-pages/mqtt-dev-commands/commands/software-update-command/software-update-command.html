@@ -1,1 +1,9 @@
-<p>software-update-command works!</p>
+<form [formGroup]="formGroup" class="flex flex-col gap-1 commands-form">
+  <mat-form-field>
+    <mat-label>
+      Name
+    </mat-label>
+    <input matInput name="Name" formControlName="Name">
+  </mat-form-field>
+  <button class="standard-button">{{ DEV_COMMANDS_RU.SEND }}</button>
+</form>
