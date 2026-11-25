@@ -13,3 +13,10 @@ export const STATUS_SET: string = MQTT + "/set%20state";
 
 export const DB_GET: string = MQTT + "/DBState/";
 export const DB_SET: string = MQTT + "/DB/";
+
+export const MEASURE_POST: string = MQTT + "/measure/";
+export const MEASURE_GET: string = MQTT + "/list%20measure/";
+
+export const SEND_COMMAND: string = MQTT + "/cmd/";
+export const UPDATE_COMMAND_STATUS: string = MQTT + "/cmd%20execution%20state/";
+

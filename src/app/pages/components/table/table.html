@@ -23,13 +23,13 @@
             {{ device.time }}
           </td>
           <td class="signal">
-            {{ device.signal }}
+            {{ device.signal || "??" }}
           </td>
           <td class="battery">
-            {{ device.battery }}%
+            {{ device.battery || "??" }}%
           </td>
           <td class="temperature">
-            {{ device.temperature }}°C
+            {{ device.temperature || "??" }}°C
           </td>
         </tr>
       }

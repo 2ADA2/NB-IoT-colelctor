@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Sources } from './sources';
+import { GetInfoCommand } from './get-info-command';
 
-describe('Sources', () => {
-  let component: Sources;
-  let fixture: ComponentFixture<Sources>;
+describe('GetInfoCommand', () => {
+  let component: GetInfoCommand;
+  let fixture: ComponentFixture<GetInfoCommand>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Sources],
+      imports: [GetInfoCommand],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(Sources);
+    fixture = TestBed.createComponent(GetInfoCommand);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

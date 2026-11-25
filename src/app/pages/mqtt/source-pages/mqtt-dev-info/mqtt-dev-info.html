@@ -1,8 +1,8 @@
 @if (!device) {
   <div class="flex flex-col gap-1">
-    <h1>{{ DEV_INFO_RU.HEADER }}<sub>{{ id }}</sub></h1>
+    <h1>{{ DEV_INFO_RU.HEADER }}</h1>
     <app-block-head>
-      {{ DEV_STATUS_RU_ERRORS['404'] }}
+      {{ DEV_INFO_RU.NOT_FOUND }}
     </app-block-head>
     <app-body>
     </app-body>

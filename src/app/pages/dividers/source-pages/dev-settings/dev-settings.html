@@ -1,1 +1,5 @@
-<p>dev-settings works!</p>
+@if (protocol === "sub") {
+  <app-sub-dev-settings></app-sub-dev-settings>
+} @else {
+  <app-mqtt-dev-settings></app-mqtt-dev-settings>
+}

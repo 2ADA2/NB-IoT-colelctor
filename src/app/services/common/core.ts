@@ -32,8 +32,10 @@ export class Core {
   private updateOs() {
     this.http.get<OSInterface>(OS).pipe(
       tap((next: OSInterface) => {
-        this.os = next["Operating system"];
-        this.checkLoading();
+        setTimeout(() => {
+          this.os = next["Operating system"];
+          this.checkLoading();
+        }, 300);
       }),
       catchError(() => {
         this.err = new Error("Auth error");

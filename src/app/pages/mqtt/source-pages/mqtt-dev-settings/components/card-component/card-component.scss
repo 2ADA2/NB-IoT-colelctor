@@ -1,0 +1,48 @@
+.card-component {
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-right: 10px solid var(--main-color);
+  position: relative;
+  transition-duration: 100ms;
+  bottom: 0;
+  cursor: pointer;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  font-size: 12px;
+
+  &:hover {
+    bottom: 4px;
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.3);
+    border-right: 10px solid var(--main-hover-color);
+  }
+
+  & .card-main {
+    display: flex;
+    flex-direction: column;
+
+    & .card-info-box {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 4px;
+      justify-content: flex-end;
+      align-items: center;
+
+      & ::after {
+        content: '';
+        position: relative;
+        display: block;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: var(--main-color);
+      }
+    }
+  }
+
+  & .card-info {
+
+  }
+}
+

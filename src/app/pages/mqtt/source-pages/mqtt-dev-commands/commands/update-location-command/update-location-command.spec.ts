@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DevInfo } from './dev-info';
+import { UpdateLocationCommand } from './update-location-command';
 
-describe('DevInfo', () => {
-  let component: DevInfo;
-  let fixture: ComponentFixture<DevInfo>;
+describe('UpdateLocationCommand', () => {
+  let component: UpdateLocationCommand;
+  let fixture: ComponentFixture<UpdateLocationCommand>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DevInfo],
+      imports: [UpdateLocationCommand],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(DevInfo);
+    fixture = TestBed.createComponent(UpdateLocationCommand);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

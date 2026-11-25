@@ -57,7 +57,7 @@ export class Settings implements OnInit {
       effect(() => {
         const settings: SettingsData | null = this.settingsService.settings();
         if (settings) {
-          this.formGroup.setValue({
+          this.formGroup.patchValue({
             HostName: settings.ConnectionDetails.HostName,
             Port: settings.ConnectionDetails.Port,
             ClientID: settings.ConnectionDetails.ClientID,

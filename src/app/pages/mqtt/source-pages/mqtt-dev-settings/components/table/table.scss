@@ -1,0 +1,70 @@
+.dev-settings-table {
+  width: 100%;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  border: 1px solid var(--main-color);
+
+  thead {
+    tr {
+      th {
+        background-color: var(--main-color);
+        color: white;
+        font-weight: 100;
+        padding: 10px;
+        border: 1px solid var(--main-color);
+        text-align: center;
+      }
+    }
+  }
+
+  .empty {
+    min-width: 100px;
+  }
+
+  tbody tr {
+    & td {
+      padding: 0 8px;
+      border: 1px solid var(--main-color);
+      text-align: left;
+
+      & .ds-input-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        & .ds-input {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          min-width: 0;
+          position: relative;
+          top: 10px;
+          height: 70px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .dev-settings-table tbody tr td .ds-input-container .ds-input {
+    width: 150px;
+  }
+}
+
+@media (max-width: 950px) {
+  .dev-settings-table tbody tr td .ds-input-container .ds-input {
+    width: 100px;
+  }
+}
+
+@media (max-width: 650px) {
+  .dev-settings-table thead .empty {
+    min-width: 80px;
+  }
+  .dev-settings-table tbody tr td .ds-input-container .ds-input {
+    width: 70px;
+  }
+}

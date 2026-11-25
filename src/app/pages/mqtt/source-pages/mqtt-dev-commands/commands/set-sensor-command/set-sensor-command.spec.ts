@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubSources } from './sub-sources';
+import { SetSensorCommand } from './set-sensor-command';
 
-describe('SubSources', () => {
-  let component: SubSources;
-  let fixture: ComponentFixture<SubSources>;
+describe('SetSensorCommand', () => {
+  let component: SetSensorCommand;
+  let fixture: ComponentFixture<SetSensorCommand>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SubSources],
+      imports: [SetSensorCommand],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(SubSources);
+    fixture = TestBed.createComponent(SetSensorCommand);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

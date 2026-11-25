@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DevCmd } from './dev-cmd';
+import { SoftwareUpdateCommand } from './software-update-command';
 
-describe('DevCmd', () => {
-  let component: DevCmd;
-  let fixture: ComponentFixture<DevCmd>;
+describe('SoftwareUpdateCommand', () => {
+  let component: SoftwareUpdateCommand;
+  let fixture: ComponentFixture<SoftwareUpdateCommand>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DevCmd],
+      imports: [SoftwareUpdateCommand],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(DevCmd);
+    fixture = TestBed.createComponent(SoftwareUpdateCommand);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

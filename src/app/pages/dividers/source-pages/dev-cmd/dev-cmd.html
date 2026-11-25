@@ -1,1 +1,5 @@
-<p>dev-cmd works!</p>
+@if (protocol === "sub") {
+  <app-sub-dev-commands></app-sub-dev-commands>
+} @else {
+  <app-mqtt-dev-commands></app-mqtt-dev-commands>
+}
